@@ -68,7 +68,7 @@
 
                     <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                         <li class="items-center">
-                            <a href="./settings.html" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                            <a href="/admin/products" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                                 <i class="fas fa-fish mr-2 text-sm text-blueGray-300"></i>
                                 Produk
                             </a>

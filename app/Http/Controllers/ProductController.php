@@ -8,6 +8,10 @@ use App\Models\Product;
 class ProductController extends Controller {
 
     public function index(Request $request) {
-        return Product::all();
+        $products = Product::all();
+
+        return view('product.index', [
+            'products' => $products
+        ]);
     }
 }
