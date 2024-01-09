@@ -73,11 +73,11 @@
                         </tr>
                         @endforeach
 
-
                     </tbody>
                 </table>
             </div>
         </div>
+        {{ $products->links('custom.pagination') }}
     </div>
 </div>
 @endsection
