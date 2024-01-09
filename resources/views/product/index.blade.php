@@ -8,18 +8,20 @@
     <div class="w-full mb-12 px-4">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
-                <div class="flex flex-wrap items-center">
-                    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                        <h3 class="font-semibold text-lg text-blueGray-700">
-                            Daftar Produk
-                        </h3>
+                <div class="flex flex-col md:flex-row flex-wrap items-center gap-4">
+                    <h3 class="font-semibold text-xl text-blueGray-700 w-full lg:w-auto lg:mr-auto">
+                        Daftar Produk
+                    </h3>
+                    <div class="relative flex flex-wrap w-full md:max-w-60">
+                        <input type="text" placeholder="Cari produk" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10" />
+                        <span class="z-10 h-full leading-snug font-normal text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-2 py-1">
+                            <i class="fas fa-search"></i>
+                        </span>
                     </div>
 
-                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                        <button class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                            <i class="fas fa-plus"></i> Tambah
-                        </button>
-                    </div>
+                    <button class="w-full md:w-auto bg-indigo-500 text-white block active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 whitespace-nowrap" type="button">
+                        <i class="fas fa-plus"></i> Tambah
+                    </button>
                 </div>
             </div>
             <div class="block w-full overflow-x-auto">
