@@ -1,7 +1,4 @@
-@extends('layouts.default')
-
-@section('title', 'Beranda')
-@section('head')
+<x-slot:head>
     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
         <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
             <div class="flex-auto p-4">
@@ -118,9 +115,9 @@
             </div>
         </div>
     </div>
-@endsection
+</x-slot>
 
-@section('content')
+<div>
     <div class="flex flex-wrap  pt-8">
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700">
@@ -468,7 +465,9 @@
             </div>
         </div>
     </div>
-@endsection
+</div>
+
+
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" charset="utf-8"></script>
     <script>

@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Livewire\ProductCreate;
+use App\Livewire\ProductTable;
+use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,7 @@ Route::get('/', function () {
     return redirect('/admin');
 });
 Route::prefix('/admin')->group(function () {
-    Route::view('/', 'admin/dashboard');
-    Route::view('/products', 'product/index');
-    Route::view('/products/create', 'product/create');
+    Route::get('/', Home::class);
+    Route::get('/products', ProductTable::class);
+    Route::get('/products/create', ProductCreate::class);
 });

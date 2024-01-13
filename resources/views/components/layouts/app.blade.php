@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
     @vite('resources/css/app.css')
 
-    <title>@yield('title') - Toko Barokah</title>
+    <title>{{ $title }} - Toko Barokah</title>
 </head>
 
 <body>
@@ -138,23 +138,25 @@
                 <div
                     class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4 h-12">
                     <div class="text-white text-sm uppercase inline-block font-semibold" href="./index.html">
-                        @yield('title')
+                        {{ $title }}
                     </div>
                 </div>
             </nav>
             <!-- Header -->
             <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
-                <div class="px-4 md:px-10 mx-auto w-full">
-                    <div>
-                        <div class="flex flex-wrap">
-                            @yield('head')
+                @isset($head)
+                    <div class="px-4 md:px-10 mx-auto w-full">
+                        <div>
+                            <div class="flex flex-wrap">
+                                {{ $head }}
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endisset
             </div>
             <!-- Content -->
             <div class="px-4 md:px-10 mx-auto w-full -m-32">
-                @yield('content')
+                {{ $slot }}
                 <footer class="block py-4 ">
                     <div class="container mx-auto px-4">
                         <hr class="mb-4 border-b-1 border-blueGray-200" />

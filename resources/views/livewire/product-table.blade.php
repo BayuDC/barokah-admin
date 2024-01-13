@@ -90,7 +90,7 @@
                 </table>
             </div>
             <div class="bg-blueGray-50 text-blueGray-500 px-4 py-3">
-                {{ $products->links('custom.pagination', data: ['scrollTo' => false]) }}
+                {{ $products->links('components.pagination', data: ['scrollTo' => false]) }}
             </div>
         </div>
     </div>
