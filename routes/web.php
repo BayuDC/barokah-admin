@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+    return redirect('/admin');
 });
 Route::prefix('/admin')->group(function () {
     Route::view('/', 'admin/dashboard');
-    Route::get('/products', [ProductController::class, 'index']);
+    Route::view('/products', 'product/index');
+    Route::view('/products/create', 'product/create');
 });
