@@ -7,13 +7,15 @@
                     <h3 class="font-semibold text-xl text-blueGray-700 w-full lg:w-auto lg:mr-auto">
                         Daftar Produk
                     </h3>
-                    <div class="relative flex flex-wrap w-full md:max-w-60">
-                        <input type="text" placeholder="Cari produk"
-                            class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10" />
-                        <span
-                            class="z-10 h-full leading-snug font-normal text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-2 py-1">
-                            <i class="fas fa-search"></i>
-                        </span>
+                    <div class="relative md:max-w-60">
+                        <form wire:submit="search" class="flex flex-wrap w-full">
+                            <input type="text" placeholder="Cari produk" wire:model="query"
+                                class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10" />
+                            <button
+                                class="z-10 h-full leading-snug font-normal text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-2 py-1">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
 
                     <a href="/admin/products/create"
@@ -56,7 +58,7 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
-                                    {{ $produk['id'] }}
+                                    {{ $product['id'] }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
                                     {{ $product['name'] }}
@@ -85,13 +87,13 @@
                                 </td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
             <div class="bg-blueGray-50 text-blueGray-500 px-4 py-3">
                 {{ $products->links('components.pagination', data: ['scrollTo' => false]) }}
             </div>
+
         </div>
     </div>
 </div>
