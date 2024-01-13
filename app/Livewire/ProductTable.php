@@ -12,7 +12,7 @@ class ProductTable extends Component {
 
     #[Title('Daftar Produk')]
     public function render() {
-        $products = Product::paginate(10);
+        $products = Product::paginate();
 
         return view('livewire.product-table', [
             'products' => $products
