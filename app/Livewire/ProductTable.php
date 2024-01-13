@@ -12,7 +12,8 @@ class ProductTable extends Component {
 
     #[Title('Daftar Produk')]
     public function render() {
-        $products = Product::paginate();
+        $products = Product::orderBy('updated_at', 'desc')->paginate(10);
+
 
         return view('livewire.product-table', [
             'products' => $products

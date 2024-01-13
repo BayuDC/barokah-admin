@@ -24,7 +24,7 @@ class ProductCreate extends Component {
 
         Product::create($body);
 
-        return redirect()->to('/admin/products?last');
+        return redirect()->to('/admin/products')->with('message', 'Produk berhasil ditambahkan');
     }
 
     #[Title('Tambah Produk')]

@@ -26,7 +26,8 @@
     <meta name="theme-color" content="#000000" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
-    <link rel="stylesheet" href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet"
+        href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
     @vite('resources/css/app.css')
 
     <title>{{ $title }} - Toko Barokah</title>
@@ -144,65 +145,80 @@
             </nav>
             <!-- Header -->
             <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
-                @isset($head)
-                    <div class="px-4 md:px-10 mx-auto w-full">
-                        <div>
-                            <div class="flex flex-wrap">
-                                {{ $head }}
+                <div class="px-4 md:px-10 mx-auto w-full">
+                    <div>
+                        {{ $head ?? '' }}
+                        @if (session('message'))
+                        <div class="px-4">
+                            <div class="text-white px-6 py-4 border-0 rounded relative bg-emerald-500 mb-8">
+                                <span class="text-xl inline-block mr-5 align-middle">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span class="inline-block align-middle mr-8">
+                                    {{ session('message') }}
+                                </span>
+                                <button
+                                    class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                                    onclick="closeAlert(event)">
+                                    <span>×</span>
+
+                                </button>
                             </div>
-                        </div>
+                        </div> @endif
                     </div>
-                @endisset
+                </div>
+
             </div>
             <!-- Content -->
-            <div class="px-4 md:px-10 mx-auto w-full -m-32">
-                {{ $slot }}
-                <footer class="block py-4 ">
-                    <div class="container mx-auto px-4">
-                        <hr class="mb-4 border-b-1 border-blueGray-200" />
-                        <div class="flex flex-wrap items-center md:justify-between justify-center">
-                            <div class="w-full md:w-4/12 px-4">
-                                <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
-                                    Copyright © <span id="get-current-year"></span>
-                                    <a href="https://www.creative-tim.com?ref=njs-dashboard"
-                                        class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
-                                        Creative Tim
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-8/12 px-4">
-                                <ul class="flex flex-wrap list-none md:justify-end justify-center">
-                                    <li>
-                                        <a href="https://www.creative-tim.com?ref=njs-dashboard"
-                                            class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                            Creative Tim
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.creative-tim.com/presentation?ref=njs-dashboard"
-                                            class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                            About Us
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://blog.creative-tim.com?ref=njs-dashboard"
-                                            class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-dashboard"
-                                            class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                            MIT License
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="px-4
+        md:px-10 mx-auto w-full -m-32">
+    {{ $slot }}
+    <footer class="block py-4 ">
+        <div class="container mx-auto px-4">
+            <hr class="mb-4 border-b-1 border-blueGray-200" />
+            <div class="flex flex-wrap items-center md:justify-between justify-center">
+                <div class="w-full md:w-4/12 px-4">
+                    <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
+                        Copyright © <span id="get-current-year"></span>
+                        <a href="https://www.creative-tim.com?ref=njs-dashboard"
+                            class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
+                            Creative Tim
+                        </a>
                     </div>
-                </footer>
+                </div>
+                <div class="w-full md:w-8/12 px-4">
+                    <ul class="flex flex-wrap list-none md:justify-end justify-center">
+                        <li>
+                            <a href="https://www.creative-tim.com?ref=njs-dashboard"
+                                class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.creative-tim.com/presentation?ref=njs-dashboard"
+                                class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com?ref=njs-dashboard"
+                                class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-dashboard"
+                                class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                MIT License
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </footer>
+    </div>
+    </div>
     </div>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script type="text/javascript">
@@ -233,8 +249,16 @@
             document.getElementById(dropdownID).classList.toggle("hidden");
             document.getElementById(dropdownID).classList.toggle("block");
         }
+
+        function closeAlert(event) {
+            let element = event.target;
+            while (element.nodeName !== "BUTTON") {
+                element = element.parentNode;
+            }
+            element.parentNode.parentNode.removeChild(element.parentNode);
+        }
     </script>
     @yield('script')
-</body>
+    </body>
 
 </html>

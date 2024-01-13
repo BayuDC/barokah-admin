@@ -56,7 +56,7 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
-                                    {{ $product['id'] }}
+                                    {{ $produk['id'] }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
                                     {{ $product['name'] }}
