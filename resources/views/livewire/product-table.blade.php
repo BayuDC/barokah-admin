@@ -1,5 +1,5 @@
 <div class="w-full mb-6 px-4">
-    <div>
+    <div x-data="{ selected: null }">
         <div class="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded bg-white"
             style="height: calc(100vh - 2rem)">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -79,9 +79,9 @@
                                         type="button">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
-                                    <button
+                                    <button type="button"
                                         class="bg-red-500 text-white active:bg-red-600 font-bold uppercase  px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button">
+                                        x-on:click="selected = { id: {{ $product['id'] }}, name: '{{ $product['name'] }}' }">
                                         <i class="fas fa-trash"></i> Hapus
                                     </button>
                                 </td>
@@ -93,7 +93,7 @@
             <div class="bg-blueGray-50 text-blueGray-500 px-4 py-3">
                 {{ $products->links('components.pagination', data: ['scrollTo' => false]) }}
             </div>
-
         </div>
+        <livewire:product-delete />
     </div>
 </div>

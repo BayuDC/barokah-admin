@@ -258,7 +258,7 @@
             element.parentNode.parentNode.removeChild(element.parentNode);
         }
     </script>
-    @yield('script')
+    @stack('script')
     </body>
 
 </html>

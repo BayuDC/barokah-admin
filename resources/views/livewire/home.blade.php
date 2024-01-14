@@ -469,8 +469,7 @@
     </div>
 </div>
 
-
-@section('script')
+@push('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" charset="utf-8"></script>
     <script>
         (function() {
@@ -666,4 +665,4 @@
             window.myBar = new Chart(ctx, config);
         })();
     </script>
-@endsection
+@endpush
