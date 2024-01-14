@@ -74,11 +74,10 @@
                                 </td>
                                 <td
                                     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    <button
-                                        class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase  px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button">
+                                    <a class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase  px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button" href="/admin/products/update/{{ $product['id'] }}">
                                         <i class="fas fa-edit"></i> Edit
-                                    </button>
+                                    </a>
                                     <button type="button"
                                         class="bg-red-500 text-white active:bg-red-600 font-bold uppercase  px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         x-on:click="selected = { id: {{ $product['id'] }}, name: '{{ $product['name'] }}' }">

@@ -3,6 +3,7 @@
 use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
 use App\Livewire\Home;
+use App\Livewire\ProductUpdate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,5 @@ Route::prefix('/admin')->group(function () {
     Route::get('/', Home::class);
     Route::get('/products', ProductTable::class);
     Route::get('/products/create', ProductCreate::class);
+    Route::get('/products/update/{product}', ProductUpdate::class);
 });
