@@ -10,7 +10,7 @@ class ProductDelete extends Component {
     public function delete($id) {
         Product::query()->where('id', $id)->delete();
 
-        return redirect()->to('/admin/products')->with('message', 'Produk berhasil dihapus' . $id);
+        return redirect()->to('/admin/products')->with('message', 'Produk berhasil dihapus');
     }
 
     public function render() {

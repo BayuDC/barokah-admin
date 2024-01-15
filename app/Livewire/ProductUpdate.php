@@ -28,11 +28,14 @@ class ProductUpdate extends Component {
     #[Validate('max:1024', message: 'Ukuran file maksimal 1 MB')]
     public $picture;
 
+    public $pictureUrl;
+
     public function mount(Product $product) {
         $this->product = $product;
         $this->name = $product['name'];
         $this->price = $product['price'];
         $this->unit = $product['unit'];
+        $this->pictureUrl = $product['picture_url'];
     }
 
     public function save() {

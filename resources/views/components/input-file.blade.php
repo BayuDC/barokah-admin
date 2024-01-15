@@ -4,10 +4,10 @@
             {{ $label }}
         </label>
 
-        <div x-data="{ active: false, filename: null }">
+        <div x-data="{ active: false, filename: null }" class="grid grid-row-2 md:grid-cols-[1fr_auto]">
             <label
                 @class([
-                    'relative flex justify-center w-full h-32 px-4 transition bg-white border-2 rounded-md appearance-none cursor-pointer focus:outline-none',
+                    'relative flex justify-center w-full h-40 px-4 transition bg-white border-2 rounded-md appearance-none cursor-pointer focus:outline-none',
                     $errors->has($model)
                         ? 'border-solid border-red-500'
                         : 'border-gray-300 hover:border-gray-400 border-dashed',
@@ -20,11 +20,11 @@
                     @this.upload('picture', file);
                 }"
                 x-bind:class="active && 'bg-emerald-100'">
-                <span class="flex items-center text-gray-600 font-medium">
+                <span class="grid grid-cols-[1fr_auto] items-center text-gray-600 font-medium ">
                     <span class="text-xl mr-2">
                         <i class="fas fa-file-image"></i>
                     </span>
-                    <span x-text="filename || 'Lempar filemu kesini'">
+                    <span x-text="filename || 'Lempar filemu kesini'" class="truncate">
                         Lempar filemu kesini
                     </span>
                 </span>
@@ -35,12 +35,20 @@
                     x-on:change="e => filename = e.target.files[0].name"
                     wire:model="{{ $model }}">
             </label>
-        </div>
 
-        <div class="mt-2 text-right text-sm text-red-500">
-            @error($model)
-                {{ $message }}
-            @enderror
-        </div>
+            @if ($preview)
+                <div
+                    class="bg-white h-40 w-40 mx-auto border-2 border-gray-300 rounded-md md:ml-4 md:mt-0 mt-4 overflow-hidden">
+                    <img src="{{ $preview }}" />
+                </div>
+            @endisset
     </div>
+
+
+    <div class="mt-2 text-right text-sm text-red-500">
+        @error($model)
+            {{ $message }}
+        @enderror
+    </div>
+</div>
 </div>

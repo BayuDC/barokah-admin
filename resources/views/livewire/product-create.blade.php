@@ -9,7 +9,7 @@
 
             <hr class="my-6 border-b-1 border-blueGray-300" />
 
-            <x-input-file label="Gambar" model="picture" />
+            <x-input-file label="Gambar" model="picture" :preview="$errors->has('picture') ? false : $picture?->temporaryUrl()" />
 
             <hr class="my-6 border-b-1 border-blueGray-300" />
 
