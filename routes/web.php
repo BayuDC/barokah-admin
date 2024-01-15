@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\CategoryCreate;
+use App\Livewire\CategoryTable;
 use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
 use App\Livewire\Home;
@@ -22,7 +24,11 @@ Route::get('/', function () {
 });
 Route::prefix('/admin')->group(function () {
     Route::get('/', Home::class);
+
     Route::get('/products', ProductTable::class);
     Route::get('/products/create', ProductCreate::class);
     Route::get('/products/update/{product}', ProductUpdate::class);
+
+    Route::get('/categories', CategoryTable::class);
+    ROute::get('/categories/create', CategoryCreate::class);
 });

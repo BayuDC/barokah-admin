@@ -1,5 +1,5 @@
 <div x-data="{ selected: null }">
-    <x-section title="Daftar Produk">
+    <x-section title="Daftar Produk" full>
         <x-slot:header>
             <div class="relative md:max-w-60">
                 <form wire:submit="search" class="flex flex-wrap w-full">

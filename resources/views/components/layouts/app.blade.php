@@ -88,7 +88,7 @@
             </li>
 
             <li class="items-center">
-              <a href="./tables.html"
+              <a href="/admin/categories"
                 class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                 <i class="fas fa-tags mr-2 text-sm text-blueGray-300"></i>
                 Kategori
