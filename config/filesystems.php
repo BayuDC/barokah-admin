@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'uploads'),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +43,10 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
-
+        'uploads' => [
+            'driver' => 'local',
+            'root'   => public_path('uploads'),
+        ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -20,6 +20,10 @@
 
                         <hr class="my-6 border-b-1 border-blueGray-300" />
 
+                        <x-input-file label="Gambar" model="picture" />
+
+                        <hr class="my-6 border-b-1 border-blueGray-300" />
+
                         <div class="flex justify-end gap-2">
                             <a href="/admin/products"
                                 class="bg-blueGray-500 text-white active:bg-blueGray-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">

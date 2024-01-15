@@ -19,7 +19,7 @@ class ProductCreate extends Component {
     public $price;
 
     #[Validate('required', message: 'Satuan produk tidak boleh kosong')]
-    public $unit;
+    public  $unit;
 
     #[Validate('required', message: 'Gambar produk tidak boleh kosong')]
     #[Validate('image', message: 'File harus berupa file gambar')]
@@ -28,6 +28,7 @@ class ProductCreate extends Component {
 
     public function save() {
         $body = $this->validate();
+        $body['picture_url'] = $this->picture->store(options: ['disk' => 'uploads']);
 
         Product::create($body);
 

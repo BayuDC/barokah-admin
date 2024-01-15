@@ -69,8 +69,11 @@
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
                                     {{ $product['unit'] }}
                                 </td>
-                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
-                                    <div class="h-12 w-12 bg-white rounded border" alt="..." />
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
+                                    <img src="{{ $product['picture_url'] }}"
+                                        class="h-20 w-20 rounded border"
+                                        alt="..." />
                                 </td>
                                 <td
                                     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

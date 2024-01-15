@@ -6,8 +6,10 @@ use Livewire\Attributes\Validate;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\Product;
+use Livewire\WithFileUploads;
 
 class ProductUpdate extends Component {
+    use WithFileUploads;
 
     public Product $product;
 
@@ -21,6 +23,11 @@ class ProductUpdate extends Component {
     #[Validate('required', message: 'Satuan produk tidak boleh kosong')]
     public $unit;
 
+    #[Validate('nullable')]
+    #[Validate('image', message: 'File harus berupa file gambar')]
+    #[Validate('max:1024', message: 'Ukuran file maksimal 1 MB')]
+    public $picture;
+
     public function mount(Product $product) {
         $this->product = $product;
         $this->name = $product['name'];
@@ -30,6 +37,9 @@ class ProductUpdate extends Component {
 
     public function save() {
         $body = $this->validate();
+        if ($this->picture) {
+            $body['picture_url'] = $this->picture->store(options: ['disk' => 'uploads']);
+        }
 
         $this->product->update($body);
 

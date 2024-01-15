@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->string('name');
             $table->unsignedInteger('price');
             $table->string('unit');
+            $table->string('picture_url');
             $table->timestamps();
         });
     }
