@@ -2,6 +2,7 @@
 
 use App\Livewire\CategoryCreate;
 use App\Livewire\CategoryTable;
+use App\Livewire\CategoryUpdate;
 use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
 use App\Livewire\Home;
@@ -30,5 +31,6 @@ Route::prefix('/admin')->group(function () {
     Route::get('/products/update/{product}', ProductUpdate::class);
 
     Route::get('/categories', CategoryTable::class);
-    ROute::get('/categories/create', CategoryCreate::class);
+    Route::get('/categories/create', CategoryCreate::class);
+    Route::get('/categories/update/{category}', CategoryUpdate::class);
 });

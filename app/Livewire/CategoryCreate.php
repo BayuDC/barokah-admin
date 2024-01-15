@@ -9,7 +9,7 @@ use Livewire\Attributes\Validate;
 
 class CategoryCreate extends Component {
 
-    #[Validate('required', message: 'Nama kategori harus diisi')]
+    #[Validate('required', message: 'Nama kategori tidak boleh kosong')]
     public string $name;
 
     public function save() {
