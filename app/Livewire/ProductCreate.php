@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\Title;
 use Livewire\Component;
-use App\Models\Product;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
+use Livewire\WithFileUploads;
+use App\Models\Product;
 
 class ProductCreate extends Component {
+    use WithFileUploads;
 
     #[Validate('required', message: 'Nama produk tidak boleh kosong')]
     public $name;
@@ -18,6 +20,11 @@ class ProductCreate extends Component {
 
     #[Validate('required', message: 'Satuan produk tidak boleh kosong')]
     public $unit;
+
+    #[Validate('required', message: 'Gambar produk tidak boleh kosong')]
+    #[Validate('image', message: 'File harus berupa file gambar')]
+    #[Validate('max:1024', message: 'Ukuran file maksimal 1 MB')]
+    public $picture;
 
     public function save() {
         $body = $this->validate();
