@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder {
                 Product::create([
                     "name" => $product['0'],
                     "price" => $product['1'],
-                    "unit" => $product['2']
+                    "unit" => $product['2'],
+                    'picture_url' => 'product.jpg'
                 ]);
             }
             $first = false;
