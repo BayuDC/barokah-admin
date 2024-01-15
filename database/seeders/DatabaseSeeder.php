@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder {
                     "name" => $product['0'],
                     "price" => $product['1'],
                     "unit" => $product['2'],
-                    'picture_url' => 'product.jpg'
+                    'picture_url' => 'product.jpg',
+                    'category_id' => 1,
                 ]);
             }
             $first = false;
