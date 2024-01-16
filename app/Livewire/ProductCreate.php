@@ -7,6 +7,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductCreate extends Component {
     use WithFileUploads;
@@ -26,6 +27,10 @@ class ProductCreate extends Component {
     #[Validate('max:1024', message: 'Ukuran file maksimal 1 MB')]
     public $picture;
 
+    #[Validate('required', message: 'Kategori produk tidak boleh kosong')]
+    #[Validate('exists:categories,id', message: 'Kategori tidak ditemukan')]
+    public $category_id;
+
     public function save() {
         $body = $this->validate();
         $body['picture_url'] = $this->picture->store(options: ['disk' => 'uploads']);
@@ -37,6 +42,9 @@ class ProductCreate extends Component {
 
     #[Title('Tambah Produk')]
     public function render() {
-        return view('livewire.product-create');
+        $categories = Category::all(['id', 'name']);
+        return view('livewire.product-create', [
+            'categories' => $categories
+        ]);
     }
 }

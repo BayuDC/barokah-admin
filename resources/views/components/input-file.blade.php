@@ -6,6 +6,7 @@
 
         <div x-data="{ active: false, filename: null }" class="grid grid-row-2 md:grid-cols-[1fr_auto]">
             <label
+                tabindex="0"
                 @class([
                     'relative flex justify-center w-full h-40 px-4 transition bg-white border-2 rounded-md appearance-none cursor-pointer focus:outline-none',
                     $errors->has($model)

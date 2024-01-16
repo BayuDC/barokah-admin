@@ -13,7 +13,7 @@ class Product extends Model {
         'id'
     ];
     protected $fillable = [
-        'name', 'price', 'unit', 'picture_url'
+        'name', 'price', 'unit', 'picture_url', 'category_id'
     ];
     public function getPictureUrlAttribute($value) {
         return '/uploads/' . $value;
