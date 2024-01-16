@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Category;
 
 class Product extends Model {
     use HasFactory;
@@ -17,5 +18,9 @@ class Product extends Model {
     ];
     public function getPictureUrlAttribute($value) {
         return '/uploads/' . $value;
+    }
+
+    public function category(): BelongsTo {
+        return $this->belongsTo(Category::class);
     }
 }
