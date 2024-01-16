@@ -1,31 +1,34 @@
-name,price,unit
-Paha Ayam,14000,250g
-Sayap Ayam,12000,250g
-Dada Ayam,15000,250g
-Pindang,7000,besek
-Pindang Besar,10000,besek
-Nila,6000,ekor
-Lele,6000,ekor
-Bandeng,9000,ekor
-Kangkung,6000,ikat
-Bayam,6000,ikat
-Bayam Merah,8000,ikat
-Jagung Muda,7000,500g
-Jagung Manis,10000,500g
-Kol,7500,500g
-Wortel,6000,250g
-Kentang,5000,250g
-Terong,6000,250g
-Kacang Panjang,6000,ikat
-Bawang Merah,7000,100g
-Bawang Putih,7000,100g
-Cabe Rawit,12000,100g
-Cabai Merah,12500,100g
-Cabai Hijau,6000,100g
-Kunyit,3000,100g
-Kencur,10000,100g
-Jahe,7000,100g
-Temulawak,6500,100g
-Ketumbar,6000,100g
-Daun Jeruk,5000,bungkus
-Daun Salam,5000,bungkus
+name,price,unit,category_id
+Paha Ayam,14000,250g,1
+Sayap Ayam,12000,250g,1
+Dada Ayam,15000,250g,1
+Pindang,7000,besek,1
+Pindang Besar,10000,besek,1
+Nila,6000,ekor,1
+Lele,6000,ekor,1
+Bandeng,9000,ekor,1
+Kangkung,6000,ikat,1
+Bayam,6000,ikat,2
+Bayam Merah,8000,ikat,2
+Jagung Muda,7000,500g,2
+Jagung Manis,10000,500g,2
+Kol,7500,500g,2
+Wortel,6000,250g,2
+Kentang,5000,250g,2
+Terong,6000,250g,2
+Kacang Panjang,6000,ikat,2
+Bawang Merah,7000,100g,3
+Bawang Putih,7000,100g,3
+Cabe Rawit,4000,100g,3
+Cabai Merah,8000,100g,3
+Cabai Hijau,6000,100g,3
+Kunyit,3000,100g,3
+Kencur,8000,100g,3
+Jahe,7000,100g,3
+Temulawak,6500,100g,3
+Ketumbar,6000,100g,3
+Daun Jeruk,5000,bungkus,3
+Daun Salam,5000,bungkus,3
+Minyak Goreng,4000,gelas,4
+Minyak Goreng,12000,500ml,4
+Minyak Goreng,18000,1liter,4

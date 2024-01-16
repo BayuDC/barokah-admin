@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder {
@@ -12,17 +13,31 @@ class DatabaseSeeder extends Seeder {
      * Seed the application's database.
      */
     public function run(): void {
+        $file = fopen(base_path("database/seeders/categories.csv"), "r");
+
+        $first = true;
+        while (($row = fgetcsv($file, 2000, ",")) !== false) {
+            if (!$first) {
+                Category::create([
+                    "name" => $row['0'],
+                ]);
+            }
+            $first = false;
+        }
+
+        fclose($file);
+
         $file = fopen(base_path("database/seeders/products.csv"), "r");
 
         $first = true;
-        while (($product = fgetcsv($file, 2000, ",")) !== false) {
+        while (($row = fgetcsv($file, 2000, ",")) !== false) {
             if (!$first) {
                 Product::create([
-                    "name" => $product['0'],
-                    "price" => $product['1'],
-                    "unit" => $product['2'],
+                    "name" => $row['0'],
+                    "price" => $row['1'],
+                    "unit" => $row['2'],
                     'picture_url' => 'product.jpg',
-                    'category_id' => 1,
+                    'category_id' => $row['3'],
                 ]);
             }
             $first = false;
