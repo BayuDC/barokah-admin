@@ -7,6 +7,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Product;
 use App\Models\Category;
+use NunoMaduro\Collision\Highlighter;
+
+use function Laravel\Prompts\search;
 
 class StockTable extends Component {
     use WithPagination;
@@ -39,8 +42,15 @@ class StockTable extends Component {
         ]);
     }
 
-    public function restock($id, $unit) {
-        dd('Hello World');
+    public function restock(int $id, int $value) {
+        $product = Product::query()->find($id);
+        if (!$product) return;
+
+        $product->stock += $value;
+        $product->timestamps = false;
+        $product->saveQuietly();
+
+        $this->resetPage();
     }
 
     public function search() {

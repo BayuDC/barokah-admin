@@ -10,15 +10,22 @@
     </x-slot:header>
     <x-table :columns="['Id', 'Produk', 'Stok', 'Tambah Stok']">
         @foreach ($products as $product)
-            <tr>
+            <tr x-data="{ stock: null }">
                 <x-table-cell>{{ $product->id }}</x-table-cell>
-                <x-table-cell>{{ $product->name }} /{{ $product->unit }}</x-table-cell>
+                <x-table-cell>{{ $product->name }}<span
+                        class="text-xs font-bold opacity-60">/{{ $product->unit }}</span></x-table-cell>
                 <x-table-cell>
-                    <div class="text-xl font-bold">20</div>
+                    <div class="text-xl font-bold {{ $product->stock <= 10 ? 'text-red-500' : 'text-black' }}">
+                        {{ $product->stock }}</div>
                 </x-table-cell>
                 <x-table-cell>
-                    <form class="flex gap-2" wire:submit="restock(1,0)">
-                        <input type="number"
+                    <form class="flex gap-2"
+                        x-on:submit.prevent="() => {
+                            $wire.restock({{ $product->id }}, stock)
+                            $refs.input.blur()
+                            stock = null
+                        }">
+                        <input type="number" x-model.number="stock" x-ref="input" placeholder="0"
                             class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white  rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline " />
 
                         <button

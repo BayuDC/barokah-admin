@@ -34,8 +34,9 @@ class DatabaseSeeder extends Seeder {
             if (!$first) {
                 Product::create([
                     "name" => $row['0'],
-                    "price" => $row['1'],
                     "unit" => $row['2'],
+                    "price" => $row['1'],
+                    "stock" => rand(0, 60),
                     'picture_url' => 'product.jpg',
                     'category_id' => $row['3'],
                 ]);
