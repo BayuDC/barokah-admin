@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: toko-barokah
+    restart: unless-stopped
+    volumes:
+      - ./apache.conf:/etc/apache2/sites-available/000-default.conf:ro
+    ports:
+      - 8000:80
+    env_file:
+      - .env
