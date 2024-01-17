@@ -1,5 +1,12 @@
 @php
     $menus = [
+        'Penjualan' => [
+            ['name' => 'Dasbor', 'url' => '/admin/', 'icon' => 'chart-area'],
+            ['name' => 'Transaksi', 'url' => '#', 'icon' => 'shopping-cart'],
+            ['name' => 'Stok Produk', 'url' => '/admin/products/stocks', 'icon' => 'boxes'],
+            //
+        ],
+
         'Manajemen Toko' => [
             ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish'],
             ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags'],
@@ -89,10 +96,12 @@
                         <!-- Divider -->
                         <hr class="my-4 md:min-w-full" />
                         <!-- Heading -->
+                        @if ($key != '')
                         <h6
                             class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                             {{ $key }}
                         </h6>
+                        @endif
                         <!-- Navigation -->
                         <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                             @foreach ($links as $link)

@@ -7,6 +7,7 @@ use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
 use App\Livewire\Home;
 use App\Livewire\ProductUpdate;
+use App\Livewire\StockTable;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,6 @@ Route::prefix('/admin')->group(function () {
     Route::get('/categories', CategoryTable::class);
     Route::get('/categories/create', CategoryCreate::class);
     Route::get('/categories/update/{category}', CategoryUpdate::class);
+
+    Route::get('/products/stocks', StockTable::class);
 });
