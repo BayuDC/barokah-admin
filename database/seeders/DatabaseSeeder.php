@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder {
     /**
@@ -45,5 +47,7 @@ class DatabaseSeeder extends Seeder {
         }
 
         fclose($file);
+
+        User::factory()->count(50)->create();
     }
 }

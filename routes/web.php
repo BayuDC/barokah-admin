@@ -1,13 +1,14 @@
 <?php
 
+use App\Livewire\Home;
 use App\Livewire\CategoryCreate;
 use App\Livewire\CategoryTable;
 use App\Livewire\CategoryUpdate;
 use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
-use App\Livewire\Home;
 use App\Livewire\ProductUpdate;
 use App\Livewire\StockTable;
+use App\Livewire\UserTable;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,10 +31,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/products', ProductTable::class);
     Route::get('/products/create', ProductCreate::class);
     Route::get('/products/update/{product}', ProductUpdate::class);
+    Route::get('/products/stocks', StockTable::class);
 
     Route::get('/categories', CategoryTable::class);
     Route::get('/categories/create', CategoryCreate::class);
     Route::get('/categories/update/{category}', CategoryUpdate::class);
 
-    Route::get('/products/stocks', StockTable::class);
+    Route::get('/users', UserTable::class);
 });
