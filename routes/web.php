@@ -8,6 +8,7 @@ use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
 use App\Livewire\ProductUpdate;
 use App\Livewire\StockTable;
+use App\Livewire\UserDetail;
 use App\Livewire\UserTable;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +39,5 @@ Route::prefix('/admin')->group(function () {
     Route::get('/categories/update/{category}', CategoryUpdate::class);
 
     Route::get('/users', UserTable::class);
+    Route::get('/users/{user}', UserDetail::class);
 });
