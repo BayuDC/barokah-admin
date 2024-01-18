@@ -7,14 +7,13 @@
             //
         ],
 
-        'Manajemen Toko' => [
+        'Manajemen Data' => [
             ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish'],
             ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags'],
             ['name' => 'Pengguna', 'url' => '/admin/users', 'icon' => 'users'],
             //
         ],
-        'Menu Pengguna' => [
-            ['name' => 'Profil', 'url' => '#', 'icon' => 'user-circle'],
+        '' => [
             ['name' => 'Keluar', 'url' => '#', 'icon' => 'sign-out-alt'],
             //
         ],
