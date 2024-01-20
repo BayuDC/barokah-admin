@@ -2,23 +2,23 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\User;
 
-class UserTable extends Component {
+class WorkerTable extends Component {
     use WithPagination;
 
     public $query = '';
 
-    #[Title("Daftar Pengguna")]
+    #[Title('Daftar Pekerja')]
     public function render() {
         $userQuery = User::query();
         $userQuery->where('name', 'like', '%' . $this->query . '%');
-        $userQuery->where('role', 'user');
+        $userQuery->whereNot('role', 'user');
 
-        return view('livewire.user-table', [
+        return view('livewire.worker-table', [
             'users' => $userQuery->paginate()
         ]);
     }

@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class DatabaseSeeder extends Seeder {
@@ -47,6 +49,25 @@ class DatabaseSeeder extends Seeder {
         }
 
         fclose($file);
+
+        User::create([
+            'name' => 'Superadmin',
+            'email' => 'admin@barokah.shop',
+            'password' => Hash::make('adminadmin'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Rusdi',
+            'email' => 'rusdi@barokah.shop',
+            'password' => Hash::make('rusdikarbu'),
+            'role' => 'worker'
+        ]);
+        User::create([
+            'name' => 'Farel',
+            'email' => 'farel@barokah.shop',
+            'password' => Hash::make('farelspakbor'),
+            'role' => 'worker'
+        ]);
 
         User::factory()->count(50)->create();
     }
