@@ -1,14 +1,14 @@
 <x-section title="Detail Pengguna">
     <x-form>
         <x-form-group>
-            <x-input-text model="name" label="Name" disabled />
-            <x-input-text model="email" label="Email" disabled />
+            <x-input-info label="Nama" :value="$user->name" />
+            <x-input-info label="Email" :value="$user->email" />
         </x-form-group>
         <x-form-divider />
         <x-form-group>
-            <x-input-text model="gender" label="Jenis Kelamin" disabled />
-            <x-input-text model="phone" label="No Telepon" disabled />
-            <x-input-text model="address" label="Alamat" disabled />
+            <x-input-info label="Jenis Kelamin" :value="$user->gender" />
+            <x-input-info label="No Telepon" :value="$user->phone" />
+            <x-input-info label="Alamat" :value="$user->address" />
         </x-form-group>
     </x-form>
 </x-section>

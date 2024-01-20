@@ -11,9 +11,11 @@
             ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish'],
             ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags'],
             ['name' => 'Pengguna', 'url' => '/admin/users', 'icon' => 'users'],
+            ['name' => 'Pekerja', 'url' => '/admin/workers', 'icon' => 'users'],
             //
         ],
         '' => [
+            ['name' => 'Profil', 'url' => '#', 'icon' => 'user'],
             ['name' => 'Keluar', 'url' => '#', 'icon' => 'sign-out-alt'],
             //
         ],
