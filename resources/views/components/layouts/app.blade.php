@@ -16,7 +16,7 @@
         ],
         '' => [
             ['name' => 'Profil', 'url' => '#', 'icon' => 'user'],
-            ['name' => 'Keluar', 'url' => '#', 'icon' => 'sign-out-alt'],
+            ['name' => 'Keluar', 'url' => '/admin/logout', 'icon' => 'sign-out-alt'],
             //
         ],
     ];
@@ -42,7 +42,7 @@
 
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
