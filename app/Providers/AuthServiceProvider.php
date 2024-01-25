@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 
 class AuthServiceProvider extends ServiceProvider {
     /**
@@ -11,14 +14,23 @@ class AuthServiceProvider extends ServiceProvider {
      *
      * @var array<class-string, class-string>
      */
-    protected $policies = [
-        //
-    ];
+    protected $policies = [];
 
     /**
      * Register any authentication / authorization services.
      */
     public function boot(): void {
-        //
+        Gate::define('manage-product', function (User $user) {
+            return $user->role == 'admin';
+        });
+        Gate::define('manage-category', function (User $user) {
+            return $user->role == 'admin';
+        });
+        Gate::define('manage-worker', function (User $user) {
+            return $user->role == 'admin';
+        });
+        Gate::define('manage-stock', function (User $user) {
+            return $user->role == 'worker';
+        });
     }
 }

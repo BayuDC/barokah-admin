@@ -12,6 +12,10 @@ class WorkerTable extends Component {
 
     public $query = '';
 
+    public function mount() {
+        $this->authorize('manage-worker');
+    }
+
     #[Title('Daftar Pekerja')]
     public function render() {
         $userQuery = User::query();

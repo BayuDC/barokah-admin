@@ -8,7 +8,9 @@
                 @endforeach
             </x-filter>
             <x-search />
-            <x-button-create href="/admin/products/create" />
+            @can('manage-product')
+                <x-button-create href="/admin/products/create" />
+            @endcan
         </x-slot:header>
         <x-table :columns="['Id', 'Nama', 'Harga', 'Satuan', 'Gambar', 'Kategori']">
 
@@ -34,19 +36,20 @@
                         {{ $product['category']['name'] }}
                     </x-table-cell>
                     <x-table-cell>
-                        <x-button-update href="/admin/products/update/{{ $product['id'] }}" />
-                        <x-button-delete
-                            x-on:click="selected = { id: {{ $product['id'] }}, name: '{{ $product['name'] }}' }" />
-
+                        @can('manage-product')
+                            <x-button-update href="/admin/products/update/{{ $product['id'] }}" />
+                            <x-button-delete
+                                x-on:click="selected = { id: {{ $product['id'] }}, name: '{{ $product['name'] }}' }" />
+                        @endcan
                     </x-table-cell>
                 </tr>
             @endforeach
         </x-table>
         <x-slot:footer>
-            <livewire:product-delete />
+            @can('manage-product')
+                <livewire:product-delete />
+            @endcan
             {{ $products->links('components.pagination', data: ['scrollTo' => false]) }}
         </x-slot>
     </x-section>
-
-
 </div>

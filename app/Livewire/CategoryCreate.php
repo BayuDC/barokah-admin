@@ -21,6 +21,10 @@ class CategoryCreate extends Component {
             ->with('message', 'Kategori berhasil ditambahkan');
     }
 
+    public function mount() {
+        $this->authorize('manage-category');
+    }
+
     #[Title("Tambah Kategori")]
     public function render() {
         return view('livewire.category-create');

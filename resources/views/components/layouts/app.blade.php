@@ -1,22 +1,21 @@
 @php
     $menus = [
         'Penjualan' => [
-            ['name' => 'Dasbor', 'url' => '/admin/', 'icon' => 'chart-area'],
-            ['name' => 'Transaksi', 'url' => '#', 'icon' => 'shopping-cart'],
-            ['name' => 'Stok Produk', 'url' => '/admin/products/stocks', 'icon' => 'boxes'],
+            ['name' => 'Dasbor', 'url' => '/admin', 'icon' => 'chart-area', 'gate' => null],
+            ['name' => 'Transaksi', 'url' => '#', 'icon' => 'shopping-cart', 'gate' => null],
+            ['name' => 'Stok Produk', 'url' => '/admin/products/stocks', 'icon' => 'boxes', 'gate' => null],
             //
         ],
-
         'Manajemen Data' => [
-            ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish'],
-            ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags'],
-            ['name' => 'Pengguna', 'url' => '/admin/users', 'icon' => 'users'],
-            ['name' => 'Pekerja', 'url' => '/admin/workers', 'icon' => 'users'],
+            ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish', 'gate' => null],
+            ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags', 'gate' => null],
+            ['name' => 'Pengguna', 'url' => '/admin/users', 'icon' => 'users', 'gate' => null],
+            ['name' => 'Pekerja', 'url' => '/admin/workers', 'icon' => 'users', 'gate' => 'manage-worker'],
             //
         ],
         '' => [
-            ['name' => 'Profil', 'url' => '#', 'icon' => 'user'],
-            ['name' => 'Keluar', 'url' => '/admin/logout', 'icon' => 'sign-out-alt'],
+            ['name' => 'Profil', 'url' => '#', 'icon' => 'user', 'gate' => null],
+            ['name' => 'Keluar', 'url' => '/admin/logout', 'icon' => 'sign-out-alt', 'gate' => null],
             //
         ],
     ];
@@ -106,19 +105,21 @@
                         <!-- Navigation -->
                         <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                             @foreach ($links as $link)
+                            @if ($link['gate'] == null || Gate::check($link['gate']))     
                                 <li class="items-center">
-                                    <a href=" {{ $link['url'] }}"
+                                    <a href="{{ $link['url'] }}"
                                         class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                                         <i class="fas fa-{{ $link['icon'] }} text-blueGray-300 mr-2 text-sm"></i>
                                         {{ $link['name'] }}
                                     </a>
-                                </li> @endforeach
+                                </li>
+                            @endif @endforeach
                         </ul>
                     @endforeach
 
 
-{{-- <hr class="my-4
-        md:min-w-full" /> --}}
+<hr class="my-4
+        md:min-w-full" />
     <div class="mt-auto
         flex flex-col ">
         <span class="text-xs font-medium text-blueGray-500">
@@ -152,77 +153,77 @@
             <div class="px-4 md:px-10 mx-auto w-full">
                 <div>
                     {{ $head ?? '' }}
-                     @if (session('message'))
-    <div class="px-4">
-        <div class="text-white px-6 py-4 border-0 rounded relative bg-emerald-500 mb-8">
-            <span class="text-xl inline-block mr-5 align-middle">
-                <i class="fas fa-check"></i>
-            </span>
-            <span class="inline-block align-middle mr-8">
-                {{ session('message') }}
-            </span>
-            <button
-                class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
-                onclick="closeAlert(event)">
-                <span>×</span>
+                    @if (session('message'))
+                        <div class="px-4">
+                            <div class="text-white px-6 py-4 border-0 rounded relative bg-emerald-500 mb-8">
+                                <span class="text-xl inline-block mr-5 align-middle">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span class="inline-block align-middle mr-8">
+                                    {{ session('message') }}
+                                </span>
+                                <button
+                                    class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                                    onclick="closeAlert(event)">
+                                    <span>×</span>
 
-            </button>
-        </div>
-    </div>
-    @endif
-    </div>
-    </div>
-
-    </div>
-    <!-- Content -->
-    <div class="px-4
-        md:px-10 mx-auto w-full -m-32">
-        {{ $slot }}
-        <footer class="block py-4 ">
-            <div class="container mx-auto px-4">
-                <hr class="mb-4 border-b-1 border-blueGray-200" />
-                <div class="flex flex-wrap items-center md:justify-between justify-center">
-                    <div class="w-full md:w-4/12 px-4">
-                        <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
-                            Copyright © <span id="get-current-year"></span>
-                            <a href="https://www.creative-tim.com?ref=njs-dashboard"
-                                class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
-                                Creative Tim
-                            </a>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="w-full md:w-8/12 px-4">
-                        <ul class="flex flex-wrap list-none md:justify-end justify-center">
-                            <li>
-                                <a href="https://www.creative-tim.com?ref=njs-dashboard"
-                                    class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                    Creative Tim
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.creative-tim.com/presentation?ref=njs-dashboard"
-                                    class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://blog.creative-tim.com?ref=njs-dashboard"
-                                    class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                    Blog
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-dashboard"
-                                    class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                    MIT License
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    @endif
                 </div>
             </div>
-        </footer>
-    </div>
+
+        </div>
+        <!-- Content -->
+        <div class="px-4
+        md:px-10 mx-auto w-full -m-32">
+            {{ $slot }}
+            <footer class="block py-4 ">
+                <div class="container mx-auto px-4">
+                    <hr class="mb-4 border-b-1 border-blueGray-200" />
+                    <div class="flex flex-wrap items-center md:justify-between justify-center">
+                        <div class="w-full md:w-4/12 px-4">
+                            <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
+                                Copyright © <span id="get-current-year"></span>
+                                <a href="https://www.creative-tim.com?ref=njs-dashboard"
+                                    class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
+                                    Creative Tim
+                                </a>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-8/12 px-4">
+                            <ul class="flex flex-wrap list-none md:justify-end justify-center">
+                                <li>
+                                    <a href="https://www.creative-tim.com?ref=njs-dashboard"
+                                        class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                        Creative Tim
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.creative-tim.com/presentation?ref=njs-dashboard"
+                                        class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                        About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://blog.creative-tim.com?ref=njs-dashboard"
+                                        class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                        Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-dashboard"
+                                        class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
+                                        MIT License
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     </div>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>

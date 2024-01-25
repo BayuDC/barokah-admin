@@ -13,20 +13,26 @@ class CategoryUpdate extends Component {
     #[Validate('required', message: 'Nama kategori tidak boleh kosong')]
     public string $name;
 
+    public function save() {
+
+        $body = $this->validate();
+        $this->category->update($body);
+
+        return redirect()->to('/admin/categories')
+            ->with('message', 'Kategori berhasil diedit');
+    }
+
     public function mount(Category $category) {
+        $this->authorize('manage-category');
+
         $this->category = $category;
         $this->name = $category['name'];
     }
 
-    public function save() {
-        $body = $this->validate();
-        $this->category->update($body);
-
-        return redirect()->to('/admin/categories')->with('message', 'Kategori berhasil diedit');
-    }
-
     #[Title('Edit Kategori')]
     public function render() {
+        $this->authorize('manage-category');
+
         return view('livewire.category-update');
     }
 }

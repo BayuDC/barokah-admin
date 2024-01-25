@@ -35,16 +35,9 @@ class ProductUpdate extends Component {
     #[Validate('exists:categories,id', message: 'Kategori tidak ditemukan')]
     public $category_id;
 
-    public function mount(Product $product) {
-        $this->product = $product;
-        $this->name = $product['name'];
-        $this->price = $product['price'];
-        $this->unit = $product['unit'];
-        $this->category_id = $product['category_id'];
-        $this->pictureUrl = $product['picture_url'];
-    }
-
     public function save() {
+        $this->authorize('manage-product');
+
         $body = $this->validate();
         if ($this->picture) {
             $body['picture_url'] = $this->picture->store(options: ['disk' => 'uploads']);
@@ -55,6 +48,16 @@ class ProductUpdate extends Component {
         return redirect()->to('/admin/products')->with('message', 'Produk berhasil diedit');
     }
 
+    public function mount(Product $product) {
+        $this->authorize('manage-product');
+
+        $this->product = $product;
+        $this->name = $product['name'];
+        $this->price = $product['price'];
+        $this->unit = $product['unit'];
+        $this->category_id = $product['category_id'];
+        $this->pictureUrl = $product['picture_url'];
+    }
 
     #[Title('Edit Produk')]
     public function render() {

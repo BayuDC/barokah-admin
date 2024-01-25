@@ -32,12 +32,18 @@ class ProductCreate extends Component {
     public $category_id;
 
     public function save() {
+        $this->authorize('manage-product');
+
         $body = $this->validate();
         $body['picture_url'] = $this->picture->store(options: ['disk' => 'uploads']);
 
         Product::create($body);
 
         return redirect()->to('/admin/products')->with('message', 'Produk berhasil ditambahkan');
+    }
+
+    public function mount() {
+        $this->authorize('manage-product');
     }
 
     #[Title('Tambah Produk')]

@@ -13,6 +13,7 @@ use App\Livewire\UserDetail;
 use App\Livewire\UserTable;
 use App\Livewire\WorkerDetail;
 use App\Livewire\WorkerTable;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,16 +44,20 @@ Route::prefix('/admin')->group(function () {
         Route::get('/categories/create', CategoryCreate::class);
         Route::get('/categories/update/{category}', CategoryUpdate::class);
 
+
         Route::get('/users', UserTable::class);
         Route::get('/users/{user}', UserDetail::class);
 
         Route::get('/workers', WorkerTable::class);
         Route::get('/workers/{user}', WorkerDetail::class);
+
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect('/admin/login');
+        });
     });
 
-    Route::get('/login', Login::class)->name('login')->middleware('guest');
-    Route::get('/logout', function () {
-        Auth::logout();
-        return redirect('/admin/login');
-    });
+    Route::get('/login', Login::class)
+        ->name('login')
+        ->middleware('guest');
 });

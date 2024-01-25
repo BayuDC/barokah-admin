@@ -43,6 +43,8 @@ class StockTable extends Component {
     }
 
     public function restock(int $id, int $value) {
+        $this->authorize('manage-stock');
+
         $product = Product::query()->find($id);
         if (!$product) return;
 

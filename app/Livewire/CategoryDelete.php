@@ -12,6 +12,10 @@ class CategoryDelete extends Component {
         return redirect()->to('/admin/categories')->with('message', 'Kategori berhasil dihapus');
     }
 
+    public function mount() {
+        $this->authorize('manage-category');
+    }
+
     public function render() {
         return view('livewire.category-delete');
     }
