@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -25,7 +26,11 @@ class Login extends Component {
 
     public function submit() {
         $body = $this->validate();
-        $auth = Auth::attempt($body);
+        $auth = Auth::attempt([
+            'email' => $body['email'],
+            'password' => $body['password'],
+            fn (Builder $query) => $query->whereNot('role', 'user')
+        ]);
 
         if ($auth) {
             return $this->redirect('/admin');

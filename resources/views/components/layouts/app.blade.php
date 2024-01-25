@@ -116,46 +116,62 @@
                         </ul>
                     @endforeach
 
+
+{{-- <hr class="my-4
+        md:min-w-full" /> --}}
+    <div class="mt-auto
+        flex flex-col ">
+        <span class="text-xs font-medium text-blueGray-500">
+            Selamat datang,
+        </span>
+        <span class="font-bold text-blueGray-800">
+            {{ Auth::user()->name }}
+            <span class="font-normal">
+                ({{ Auth::user()->role == 'worker' ? 'Karyawan' : 'Admin' }})
+            </span>
+        </span>
+    </div>
+    </div>
+
+    </div>
+    </nav>
+    <div class="relative
+        md:ml-64 bg-blueGray-50">
+        <nav
+            class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
+
+            <div
+                class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4 h-12">
+                <div class="text-white text-sm uppercase inline-block font-semibold" href="./index.html">
+                    {{ $title }}
                 </div>
             </div>
         </nav>
-        <div class="relative
-        md:ml-64 bg-blueGray-50">
-    <nav
-        class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
+        <!-- Header -->
+        <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
+            <div class="px-4 md:px-10 mx-auto w-full">
+                <div>
+                    {{ $head ?? '' }}
+                     @if (session('message'))
+    <div class="px-4">
+        <div class="text-white px-6 py-4 border-0 rounded relative bg-emerald-500 mb-8">
+            <span class="text-xl inline-block mr-5 align-middle">
+                <i class="fas fa-check"></i>
+            </span>
+            <span class="inline-block align-middle mr-8">
+                {{ session('message') }}
+            </span>
+            <button
+                class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                onclick="closeAlert(event)">
+                <span>×</span>
 
-        <div
-            class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4 h-12">
-            <div class="text-white text-sm uppercase inline-block font-semibold" href="./index.html">
-                {{ $title }}
-            </div>
+            </button>
         </div>
-    </nav>
-    <!-- Header -->
-    <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
-        <div class="px-4 md:px-10 mx-auto w-full">
-            <div>
-                {{ $head ?? '' }}
-                @if (session('message'))
-                    <div class="px-4">
-                        <div class="text-white px-6 py-4 border-0 rounded relative bg-emerald-500 mb-8">
-                            <span class="text-xl inline-block mr-5 align-middle">
-                                <i class="fas fa-check"></i>
-                            </span>
-                            <span class="inline-block align-middle mr-8">
-                                {{ session('message') }}
-                            </span>
-                            <button
-                                class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
-                                onclick="closeAlert(event)">
-                                <span>×</span>
-
-                            </button>
-                        </div>
-                    </div>
-                @endif
-            </div>
-        </div>
+    </div>
+    @endif
+    </div>
+    </div>
 
     </div>
     <!-- Content -->
