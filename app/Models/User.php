@@ -19,6 +19,9 @@ class User extends Authenticatable {
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'gender'
     ];
 
     protected $hidden = [
@@ -38,13 +41,7 @@ class User extends Authenticatable {
                 return 'Perempuan';
 
             default:
-                return '';
+                return null;
         }
-    }
-
-    public static function search($keyword): Builder {
-        $query = $this->query();;
-
-        return $query;
     }
 }
