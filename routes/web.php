@@ -8,6 +8,8 @@ use App\Livewire\Login;
 use App\Livewire\ProductCreate;
 use App\Livewire\ProductTable;
 use App\Livewire\ProductUpdate;
+use App\Livewire\Profile;
+use App\Livewire\Password;
 use App\Livewire\StockTable;
 use App\Livewire\UserDetail;
 use App\Livewire\UserTable;
@@ -34,6 +36,8 @@ Route::get('/', function () {
 Route::prefix('/admin')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', Home::class);
+        Route::get('/profile', Profile::class);
+        Route::get('/password', Password::class);
 
         Route::get('/products', ProductTable::class);
         Route::get('/products/create', ProductCreate::class);

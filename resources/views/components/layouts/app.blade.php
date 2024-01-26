@@ -9,12 +9,13 @@
         'Manajemen Data' => [
             ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish', 'gate' => null],
             ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags', 'gate' => null],
-            ['name' => 'Pengguna', 'url' => '/admin/users', 'icon' => 'users', 'gate' => null],
-            ['name' => 'Pekerja', 'url' => '/admin/workers', 'icon' => 'users', 'gate' => 'manage-worker'],
+            ['name' => 'Pembeli', 'url' => '/admin/users', 'icon' => 'users', 'gate' => null],
+            ['name' => 'Karyawan', 'url' => '/admin/workers', 'icon' => 'users', 'gate' => 'manage-worker'],
             //
         ],
         '' => [
-            ['name' => 'Profil', 'url' => '#', 'icon' => 'user', 'gate' => null],
+            ['name' => 'Data Diri', 'url' => '/admin/profile', 'icon' => 'user', 'gate' => null],
+            ['name' => 'Kata Sandi', 'url' => '/admin/password', 'icon' => 'lock', 'gate' => null],
             ['name' => 'Keluar', 'url' => '/admin/logout', 'icon' => 'sign-out-alt', 'gate' => null],
             //
         ],
