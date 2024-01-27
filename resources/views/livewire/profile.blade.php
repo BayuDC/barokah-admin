@@ -14,7 +14,10 @@
         </x-form-group>
         <x-form-divider />
         <x-form-group>
-            <x-input-text label="Jenis Kelamin" model="form.gender" />
+            <x-input-select label="Jenis Kelamin" model="form.gender">
+                <option value="M">Laki-laki</option>
+                <option value="F">Perempuan</option>
+            </x-input-select>
             <x-input-text label="No Telepon" model="form.phone" />
             <x-input-text label="Alamat" model="form.address" />
         </x-form-group>

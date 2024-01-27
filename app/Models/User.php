@@ -32,8 +32,12 @@ class User extends Authenticatable {
         'password' => 'hashed',
     ];
 
-    public function getGenderAttribute($value) {
-        switch ($value) {
+    protected $attributes = [
+        'gender_pretty'
+    ];
+
+    public function getGenderPrettyAttribute() {
+        switch ($this->gender) {
             case 'M':
                 return 'Laki-laki';
 

@@ -23,7 +23,7 @@ class UserForm extends Form {
                 'required', 'email',
                 Rule::unique('users', 'email')->ignore($this->user->id)
             ],
-            'gender' => 'nullable|in:male,female',
+            'gender' => 'nullable|in:M,F',
             'phone' => 'nullable',
             'address' => 'nullable',
         ];

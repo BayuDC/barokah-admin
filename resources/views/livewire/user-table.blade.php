@@ -8,7 +8,7 @@
                 <x-table-cell>{{ $user->id }}</x-table-cell>
                 <x-table-cell>{{ $user->name }}</x-table-cell>
                 <x-table-cell>{{ $user->email }}</x-table-cell>
-                <x-table-cell>{{ $user->gender }}</x-table-cell>
+                <x-table-cell>{{ $user->genderPretty }}</x-table-cell>
                 <x-table-cell>
                     <x-button-detail href="/admin/users/{{ $user->id }}" />
                 </x-table-cell>
