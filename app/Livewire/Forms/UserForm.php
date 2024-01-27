@@ -4,10 +4,11 @@ namespace App\Livewire\Forms;
 
 use App\Models\User;
 use Illuminate\Validation\Rule;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
+use Livewire\Attributes\Validate;
 
 class UserForm extends Form {
+
     public ?User $user;
 
     public $name;
@@ -15,6 +16,12 @@ class UserForm extends Form {
     public $gender;
     public $phone;
     public $address;
+
+    #[Validate('nullable')]
+    #[Validate('image', message: 'File harus berupa file gambar')]
+    #[Validate('max:1024', message: 'Ukuran file maksimal 1 MB')]
+    public $picture;
+    public $pictureUrl;
 
     public function rules() {
         return [
@@ -45,9 +52,16 @@ class UserForm extends Form {
         $this->gender = $user->gender;
         $this->phone = $user->phone;
         $this->address = $user->address;
+        $this->pictureUrl = $user['picture_url'];
     }
     public function update() {
         $body = $this->validate();
+
+        if ($this->picture) {
+            $body['picture_url'] = $this->picture
+                ->store(options: ['disk' => 'uploads']);
+        }
+
         $this->user->update($body);
     }
 }

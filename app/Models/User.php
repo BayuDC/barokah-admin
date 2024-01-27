@@ -21,7 +21,8 @@ class User extends Authenticatable {
         'password',
         'phone',
         'address',
-        'gender'
+        'gender',
+        'picture_url'
     ];
 
     protected $hidden = [
@@ -47,5 +48,8 @@ class User extends Authenticatable {
             default:
                 return null;
         }
+    }
+    public function getPictureUrlAttribute($value) {
+        return '/uploads/' . $value;
     }
 }

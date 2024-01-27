@@ -4,10 +4,12 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\UserForm;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\WithFileUploads;
 
 class Profile extends Component {
+    use WithFileUploads;
 
     public UserForm $form;
 

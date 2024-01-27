@@ -22,6 +22,13 @@
             <x-input-text label="Alamat" model="form.address" />
         </x-form-group>
         <x-form-divider />
+        <x-input-file label="Foto" model="form.picture"
+            :preview="$form->picture
+                ? ($errors->has('form.picture')
+                    ? null
+                    : $form->picture?->temporaryUrl())
+                : $form->pictureUrl" />
+        <x-form-divider />
         <x-form-control simple />
     </x-form>
 </x-section>

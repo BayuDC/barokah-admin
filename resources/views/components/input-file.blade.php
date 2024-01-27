@@ -18,7 +18,7 @@
                 x-on:drop.prevent="e => {
                     file = e.dataTransfer.files[0];
                     filename = file.name;
-                    @this.upload('picture', file);
+                    @this.upload('{{ $model }}', file);
                 }"
                 x-bind:class="active && 'bg-emerald-100'">
                 <span class="grid grid-cols-[1fr_auto] items-center text-gray-600 font-medium ">

@@ -28,7 +28,6 @@ class ProductUpdate extends Component {
     #[Validate('image', message: 'File harus berupa file gambar')]
     #[Validate('max:1024', message: 'Ukuran file maksimal 1 MB')]
     public $picture;
-
     public $pictureUrl;
 
     #[Validate('required', message: 'Kategori produk tidak boleh kosong')]
