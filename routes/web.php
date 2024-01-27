@@ -13,6 +13,7 @@ use App\Livewire\Password;
 use App\Livewire\StockTable;
 use App\Livewire\UserDetail;
 use App\Livewire\UserTable;
+use App\Livewire\WorkerCreate;
 use App\Livewire\WorkerDetail;
 use App\Livewire\WorkerTable;
 use App\Models\Product;
@@ -53,6 +54,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/users/{user}', UserDetail::class);
 
         Route::get('/workers', WorkerTable::class);
+        Route::get('/workers/create', WorkerCreate::class);
         Route::get('/workers/{user}', WorkerDetail::class);
 
         Route::get('/logout', function () {

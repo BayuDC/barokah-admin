@@ -22,6 +22,7 @@ class User extends Authenticatable {
         'phone',
         'address',
         'gender',
+        'role',
         'picture_url'
     ];
 
@@ -31,10 +32,6 @@ class User extends Authenticatable {
 
     protected $casts = [
         'password' => 'hashed',
-    ];
-
-    protected $attributes = [
-        'gender_pretty'
     ];
 
     public function getGenderPrettyAttribute() {
@@ -50,6 +47,10 @@ class User extends Authenticatable {
         }
     }
     public function getPictureUrlAttribute($value) {
+        if (!$value) {
+            return '/default/user.jpg';
+        }
+
         return '/uploads/' . $value;
     }
 }

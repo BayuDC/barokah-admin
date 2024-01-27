@@ -3,13 +3,14 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Livewire\Form;
 use Livewire\Attributes\Validate;
 
 class UserForm extends Form {
 
-    public ?User $user;
+    public ?User $user = null;
 
     public $name;
     public $email;
@@ -28,7 +29,7 @@ class UserForm extends Form {
             'name' => 'required',
             'email' => [
                 'required', 'email',
-                Rule::unique('users', 'email')->ignore($this->user->id)
+                $this->user ? Rule::unique('users', 'email')->ignore($this->user?->id) : 'unique:users,email'
             ],
             'gender' => 'nullable|in:M,F',
             'phone' => 'nullable',
@@ -63,5 +64,18 @@ class UserForm extends Form {
         }
 
         $this->user->update($body);
+    }
+
+    public function create() {
+        $body = $this->validate();
+
+        if ($this->picture) {
+            $body['picture_url'] = $this->picture
+                ->store(options: ['disk' => 'uploads']);
+        }
+
+        $body['role'] = 'worker';
+        $body['password'] = Hash::make('barokahku');
+        User::create($body);
     }
 }

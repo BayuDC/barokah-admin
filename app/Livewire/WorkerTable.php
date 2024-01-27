@@ -16,7 +16,7 @@ class WorkerTable extends Component {
         $this->authorize('manage-worker');
     }
 
-    #[Title('Daftar Pekerja')]
+    #[Title('Daftar Karyawan')]
     public function render() {
         $userQuery = User::query();
         $userQuery->where('name', 'like', '%' . $this->query . '%');
