@@ -16,8 +16,8 @@
                 <x-table-cell>{{ $user->role == 'admin' ? 'Admin' : 'Karyawan' }}</x-table-cell>
                 <x-table-cell>
                     <x-button-detail href="/admin/workers/{{ $user->id }}" />
+                    <x-button-update href="/admin/workers/update/{{ $user->id }}" />
                     @if ($user->role != 'admin')
-                        <x-button-update />
                         <x-button-delete />
                     @endif
                 </x-table-cell>

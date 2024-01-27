@@ -16,6 +16,7 @@ use App\Livewire\UserTable;
 use App\Livewire\WorkerCreate;
 use App\Livewire\WorkerDetail;
 use App\Livewire\WorkerTable;
+use App\Livewire\WorkerUpdate;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,7 @@ Route::prefix('/admin')->group(function () {
 
         Route::get('/workers', WorkerTable::class);
         Route::get('/workers/create', WorkerCreate::class);
+        Route::get('/workers/update/{user}', WorkerUpdate::class);
         Route::get('/workers/{user}', WorkerDetail::class);
 
         Route::get('/logout', function () {
