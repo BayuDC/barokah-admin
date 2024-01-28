@@ -6,10 +6,13 @@ use App\Models\Category;
 use Livewire\Component;
 
 class CategoryDelete extends Component {
-    public function delete($id) {
+    public function attempt($id) {
+        $this->authorize('manage-category');
+
         Category::query()->where('id', $id)->delete();
 
-        return redirect()->to('/admin/categories')->with('message', 'Kategori berhasil dihapus');
+        return redirect()->to('/admin/categories')
+            ->with('message', 'Kategori berhasil dihapus');
     }
 
     public function mount() {

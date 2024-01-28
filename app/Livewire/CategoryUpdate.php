@@ -2,21 +2,18 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\CategoryForm;
 use App\Models\Category;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CategoryUpdate extends Component {
-    public Category $category;
-
-    #[Validate('required', message: 'Nama kategori tidak boleh kosong')]
-    public string $name;
+    public CategoryForm $form;
 
     public function save() {
-
-        $body = $this->validate();
-        $this->category->update($body);
+        $this->authorize('manage-category');
+        $this->form->update();
 
         return redirect()->to('/admin/categories')
             ->with('message', 'Kategori berhasil diedit');
@@ -24,15 +21,11 @@ class CategoryUpdate extends Component {
 
     public function mount(Category $category) {
         $this->authorize('manage-category');
-
-        $this->category = $category;
-        $this->name = $category['name'];
+        $this->form->load($category);
     }
 
     #[Title('Edit Kategori')]
     public function render() {
-        $this->authorize('manage-category');
-
         return view('livewire.category-update');
     }
 }

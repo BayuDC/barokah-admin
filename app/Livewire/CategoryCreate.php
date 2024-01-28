@@ -10,6 +10,7 @@ class CategoryCreate extends Component {
     public CategoryForm $form;
 
     public function save() {
+        $this->authorize('manage-category');
         $this->form->create();
 
         return redirect()->to('/admin/categories')

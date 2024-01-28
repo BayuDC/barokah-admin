@@ -1,1 +1,1 @@
-<x-modal-delete key="user" label="Karyawan" />
+<x-modal-delete key="user" label="karyawan" />
