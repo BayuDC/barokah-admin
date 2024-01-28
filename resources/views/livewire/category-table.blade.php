@@ -5,7 +5,7 @@
                 <x-button-create href="/admin/categories/create" />
             @endcan
         </x-slot:header>
-        <x-table :columns="['Id', 'Nama']">
+        <x-table :columns="['Id', 'Nama', 'Warna']">
             @foreach ($categories as $category)
                 <tr>
                     <x-table-cell>
@@ -13,6 +13,9 @@
                     </x-table-cell>
                     <x-table-cell>
                         {{ $category['name'] }}
+                    </x-table-cell>
+                    <x-table-cell>
+                        <x-dot :color="$category->color" />
                     </x-table-cell>
                     <x-table-cell>
                         @can('manage-category')

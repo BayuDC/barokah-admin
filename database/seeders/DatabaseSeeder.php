@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder {
         fclose($file);
 
         User::create([
-            'name' => 'Superadmin',
+            'name' => 'Admin',
             'email' => 'admin@barokah.shop',
             'password' => Hash::make('adminadmin'),
             'role' => 'admin'
@@ -69,6 +69,6 @@ class DatabaseSeeder extends Seeder {
             'role' => 'worker'
         ]);
 
-        User::factory()->count(50)->create();
+        User::factory()->count(100)->create();
     }
 }

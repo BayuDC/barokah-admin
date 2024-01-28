@@ -8,6 +8,17 @@ module.exports = {
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
+  safelist: [
+    "text-red-400",
+    "text-orange-400",
+    "text-amber-400",
+    "text-emerald-400",
+    "text-teal-400",
+    "text-lightBlue-400",
+    "text-indigo-400",
+    "text-purple-400",
+    "text-pink-400",
+  ],
   theme: {
     colors: {
       ...colors,

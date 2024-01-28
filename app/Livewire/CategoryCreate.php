@@ -2,20 +2,15 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\Title;
 use Livewire\Component;
-use App\Models\Category;
-use Livewire\Attributes\Validate;
+use Livewire\Attributes\Title;
+use App\Livewire\Forms\CategoryForm;
 
 class CategoryCreate extends Component {
-
-    #[Validate('required', message: 'Nama kategori tidak boleh kosong')]
-    public string $name;
+    public CategoryForm $form;
 
     public function save() {
-        $body = $this->validate();
-
-        Category::query()->create($body);
+        $this->form->create();
 
         return redirect()->to('/admin/categories')
             ->with('message', 'Kategori berhasil ditambahkan');
