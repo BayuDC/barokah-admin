@@ -1,5 +1,6 @@
 <x-section title="Daftar Kategori" x-data="{ category: null }" full>
     <x-slot:header>
+        <x-search />
         @can('manage-category')
             <x-button-create href="/admin/categories/create" />
         @endcan
@@ -30,5 +31,6 @@
         @can('manage-category')
             <livewire:category-delete />
         @endcan
+        {{ $categories->links('components.pagination', data: ['scrollTo' => false]) }}
     </x-slot:footer>
 </x-section>

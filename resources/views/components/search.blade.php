@@ -1,5 +1,5 @@
 <div class="relative md:max-w-60 w-full">
-    <form wire:submit="search" class="flex flex-wrap w-full">
+    <form wire:submit="resetPage" class="flex flex-wrap w-full">
         <input type="text" wire:model="query" placeholder="Ketik untuk mencari"
             class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10" />
         <button
