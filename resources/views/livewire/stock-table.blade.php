@@ -8,15 +8,33 @@
         </x-filter>
         <x-search />
     </x-slot:header>
-    <x-table :columns="['Id', 'Produk', 'Stok']">
+    <x-table :columns="['Id', 'Foto', 'Produk', 'Stok']">
         @foreach ($products as $product)
-            <tr x-data="{ stock: null }">
+            <x-table-row x-data="{ stock: null }">
                 <x-table-cell>{{ $product->id }}</x-table-cell>
-                <x-table-cell>{{ $product->name }}<span
-                        class="text-xs font-bold opacity-60">/{{ $product->unit }}</span></x-table-cell>
                 <x-table-cell>
-                    <div class="text-xl font-bold {{ $product->stock <= 10 ? 'text-red-500' : 'text-blueGray-600' }}">
-                        {{ $product->stock }}</div>
+                    <x-photo :url="$product['picture_url']"></x-photo>
+                </x-table-cell>
+                <x-table-cell>
+                    {{ $product->name }}<span
+                        class="text-sm font-bold text-blueGray-400">/{{ $product->unit }}</span></x-table-cell>
+                <x-table-cell>
+                    @if ($product->stock < 20)
+                        <span
+                            class="text-lg font-semibold inline-block py-1 px-3 rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1">
+                            {{ $product->stock }}
+                        </span>
+                    @elseif($product->stock < 40)
+                        <span
+                            class="text-lg font-semibold inline-block py-1 px-3 rounded text-amber-600 bg-amber-200 uppercase last:mr-0 mr-1">
+                            {{ $product->stock }}
+                        </span>
+                    @else
+                        <span
+                            class="text-lg font-semibold inline-block py-1 px-3 rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">
+                            {{ $product->stock }}
+                        </span>
+                    @endif
                 </x-table-cell>
                 <x-table-cell>
                     @can('manage-stock')
@@ -38,7 +56,7 @@
                     @endcan
 
                 </x-table-cell>
-            </tr>
+            </x-table-row>
         @endforeach
     </x-table>
     <x-slot:footer>

@@ -23,17 +23,16 @@ class StockTable extends Component {
 
     #[Title('Stok Produk')]
     public function render() {
-        $productQuery = Product::query();
-        $productQuery
+        $query = Product::query();
+        $query
             ->where('name', 'like', '%' . $this->query . '%')
-            ->orderBy('updated_at', 'desc')
             ->with('category:id,name');
 
         if ($this->filter['category'] != 0) {
-            $productQuery->where('category_id', $this->filter['category']);
+            $query->where('category_id', $this->filter['category']);
         }
 
-        $products = $productQuery->paginate(10);
+        $products = $query->paginate(10);
         $categories = Category::all('id', 'name');
 
         return view('livewire.stock-table', [
@@ -49,13 +48,12 @@ class StockTable extends Component {
         if (!$product) return;
 
         $product->stock += $value;
+        if ($product->stock < 0) {
+            $product->stock = 0;
+        }
         $product->timestamps = false;
         $product->saveQuietly();
 
-        $this->resetPage();
-    }
-
-    public function search() {
         $this->resetPage();
     }
 }
