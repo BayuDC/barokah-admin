@@ -5,13 +5,10 @@
     </x-slot:header>
     <x-table :columns="['Id', 'Foto', 'Nama', 'Email', 'Peran']">
         @foreach ($users as $user)
-            <tr>
+            <x-table-row>
                 <x-table-cell>{{ $user->id }}</x-table-cell>
                 <x-table-cell>
-                    <div class="h-12 w-12 aspect-square overflow-hidden rounded-full border-2 border-indigo-600">
-                        <img src="{{ $user['picture_url'] }}"
-                            class=" bg-white w-full">
-                    </div>
+                    <x-photo :url="$user['picture_url']" />
                 </x-table-cell>
                 <x-table-cell>{{ $user->name }}</x-table-cell>
                 <x-table-cell>{{ $user->email }}</x-table-cell>
@@ -36,7 +33,7 @@
                             x-on:click="user = { id: '{{ $user->id }}', name: '{{ $user->name }}' }" />
                     @endif
                 </x-table-cell>
-            </tr>
+            </x-table-row>
         @endforeach
     </x-table>
     <x-slot:footer>

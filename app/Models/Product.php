@@ -17,6 +17,10 @@ class Product extends Model {
         'name', 'price', 'unit', 'picture_url', 'category_id'
     ];
     public function getPictureUrlAttribute($value) {
+        if (!$value) {
+            return '/default/product.png';
+        }
+
         return '/uploads/' . $value;
     }
 

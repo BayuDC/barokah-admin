@@ -7,7 +7,7 @@
     </x-slot:header>
     <x-table :columns="['Id', 'Nama', 'Warna']">
         @foreach ($categories as $category)
-            <tr>
+            <x-table-row>
                 <x-table-cell>
                     {{ $category['id'] }}
                 </x-table-cell>
@@ -24,7 +24,7 @@
                             x-on:click="category = { id: {{ $category['id'] }}, name: '{{ $category['name'] }}' }" />
                     @endcan
                 </x-table-cell>
-            </tr>
+            </x-table-row>
         @endforeach
     </x-table>
     <x-slot:footer>

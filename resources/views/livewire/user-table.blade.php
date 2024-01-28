@@ -4,13 +4,10 @@
     </x-slot:header>
     <x-table :columns="['Id', 'Foto', 'Nama', 'Email', 'Jenis Kelamin']">
         @foreach ($users as $user)
-            <tr>
+            <x-table-row>
                 <x-table-cell>{{ $user->id }}</x-table-cell>
                 <x-table-cell>
-                    <div class="h-12 w-12 aspect-square overflow-hidden rounded-full border-2 border-indigo-600">
-                        <img src="{{ $user['picture_url'] }}"
-                            class=" bg-white w-full">
-                    </div>
+                    <x-photo :url="$user['picture_url']" />
                 </x-table-cell>
                 <x-table-cell>{{ $user->name }}</x-table-cell>
                 <x-table-cell>{{ $user->email }}</x-table-cell>
@@ -34,7 +31,7 @@
                 <x-table-cell>
                     <x-button-detail href="/admin/users/{{ $user->id }}" />
                 </x-table-cell>
-            </tr>
+            </x-table-row>
         @endforeach
     </x-table>
     <x-slot:footer>{{ $users->links('components.pagination', data: ['scrollTo' => false]) }}</x-slot:footer>

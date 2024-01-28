@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder {
                     "unit" => $row['2'],
                     "price" => $row['1'],
                     "stock" => rand(0, 60),
-                    'picture_url' => 'product.jpg',
+                    'picture_url' => null,
                     'category_id' => $row['3'],
                 ]);
             }

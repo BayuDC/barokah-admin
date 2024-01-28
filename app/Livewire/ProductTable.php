@@ -19,26 +19,21 @@ class ProductTable extends Component {
 
     #[Title('Daftar Produk')]
     public function render() {
-        $productQuery = Product::query();
-        $productQuery
-            ->where('name', 'like', '%' . $this->query . '%')
-            ->orderBy('updated_at', 'desc')
-            ->with('category:id,name');
+        $query = Product::query();
+        $query->where('name', 'like', '%' . $this->query . '%');
+        $query->with('category:id,name,color');
+        // ->orderBy('updated_at', 'desc')
 
         if ($this->filter['category'] != 0) {
-            $productQuery->where('category_id', $this->filter['category']);
+            $query->where('category_id', $this->filter['category']);
         }
 
-        $products = $productQuery->paginate(10);
+        $products = $query->paginate();
         $categories = Category::all('id', 'name');
 
         return view('livewire.product-table', [
             'products' => $products,
             'categories' => $categories
         ]);
-    }
-
-    public function search() {
-        $this->resetPage();
     }
 }

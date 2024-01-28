@@ -7,7 +7,7 @@ use App\Models\Product;
 
 class ProductDelete extends Component {
 
-    public function delete($id) {
+    public function attempt($id) {
         $this->authorize('manage-product');
 
         Product::query()->where('id', $id)->delete();
