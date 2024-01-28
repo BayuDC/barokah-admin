@@ -9,7 +9,7 @@
         'Manajemen Data' => [
             ['name' => 'Produk', 'url' => '/admin/products', 'icon' => 'fish', 'gate' => null],
             ['name' => 'Kategori', 'url' => '/admin/categories', 'icon' => 'tags', 'gate' => null],
-            ['name' => 'Pembeli', 'url' => '/admin/users', 'icon' => 'users', 'gate' => null],
+            ['name' => 'Pelanggan', 'url' => '/admin/users', 'icon' => 'users', 'gate' => null],
             ['name' => 'Karyawan', 'url' => '/admin/workers', 'icon' => 'users', 'gate' => 'manage-worker'],
             //
         ],

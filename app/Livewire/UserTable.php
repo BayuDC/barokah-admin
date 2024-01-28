@@ -12,7 +12,7 @@ class UserTable extends Component {
 
     public $query = '';
 
-    #[Title("Daftar Pengguna")]
+    #[Title("Daftar Pelanggan")]
     public function render() {
         $userQuery = User::query();
         $userQuery->where('name', 'like', '%' . $this->query . '%');
