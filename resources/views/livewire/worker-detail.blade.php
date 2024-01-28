@@ -29,18 +29,26 @@
             <x-input-info label="No Telepon" :value="$user->phone" />
             <x-input-info label="Alamat" :value="$user->address" />
             @if ($user->role != 'user')
-                <div class="w-full">
+                <div class="w-full" x-data="{
+                    open: false,
+                    cancel() { this.open = false },
+                    confirm() { $wire.resetPassword() }
+                }">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                             Kata Sandi
                         </label>
 
                         <button
+                            x-on:click="open = true"
                             class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 w-full"
                             type="button">
                             <i class="fas fa-unlock"></i> Reset Kata Sandi
                         </button>
                     </div>
+                    <x-modal>
+                        Apakah anda yakin akan mengembalikan kata sandi ke pengaturan awal (barokahku)
+                    </x-modal>
                 </div>
                 <x-input-info label="Peran" :value="$user->rolePretty" />
             @endif
