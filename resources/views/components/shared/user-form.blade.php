@@ -22,5 +22,5 @@
                 : $form->picture?->temporaryUrl())
             : $form->pictureUrl" />
     <x-form-divider />
-    <x-form-control simple />
+    <x-form-control />
 </x-form>

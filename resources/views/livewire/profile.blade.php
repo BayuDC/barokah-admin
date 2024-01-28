@@ -8,6 +8,7 @@
         </a>
     </x-slot:header>
     <x-form>
+
         <x-form-group>
             <x-input-text label="Nama" model="form.name" />
             <x-input-text label="Email" model="form.email" />
