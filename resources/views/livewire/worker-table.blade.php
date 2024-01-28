@@ -8,9 +8,9 @@
             <tr>
                 <x-table-cell>{{ $user->id }}</x-table-cell>
                 <x-table-cell>
-                    <div class="h-12 w-12 aspect-square">
+                    <div class="h-12 w-12 aspect-square overflow-hidden rounded-full border border-gray-400">
                         <img src="{{ $user['picture_url'] }}"
-                            class=" bg-white rounded-full border border-gray-400">
+                            class=" bg-white w-full">
                     </div>
                 </x-table-cell>
                 <x-table-cell>{{ $user->name }}</x-table-cell>

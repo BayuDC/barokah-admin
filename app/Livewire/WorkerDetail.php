@@ -14,8 +14,7 @@ class WorkerDetail extends Component {
         $this->user = $user;
     }
 
-
-    #[Title('Detail Pekerja')]
+    #[Title('Detail Karyawan')]
     public function render() {
         return view('livewire.worker-detail');
     }

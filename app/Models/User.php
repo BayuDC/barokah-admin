@@ -53,4 +53,18 @@ class User extends Authenticatable {
 
         return '/uploads/' . $value;
     }
+
+    public function getRolePrettyAttribute() {
+        switch ($this->role) {
+            case 'admin':
+                return 'Admin';
+            case 'worker':
+                return 'Karyawan';
+            case 'user':
+                return 'Pembeli';
+
+            default:
+                return null;
+        }
+    }
 }
