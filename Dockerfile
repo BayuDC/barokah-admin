@@ -30,5 +30,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN chown -R www-data:www-data /var/www
 RUN composer install
 
+RUN sed -i '/abort_unless/s/^/#/' /var/www/vendor/livewire/livewire/src/Features/SupportFileUploads/FileUploadController.php 
+RUN sed -i '/abort_unless/s/^/#/' /var/www/vendor/livewire/livewire/src/Features/SupportFileUploads/FilePreviewController.php 
+
 
 
