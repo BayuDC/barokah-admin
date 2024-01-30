@@ -12,6 +12,8 @@
         "laravel/socialite": "^5.11",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.3",
+        "socialiteproviders/discord": "^4.2",
+        "socialiteproviders/google": "^4.1",
         "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {

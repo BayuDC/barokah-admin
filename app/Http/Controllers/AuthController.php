@@ -19,7 +19,7 @@ class AuthController extends Controller {
         return Socialite::driver('google')->redirect();
     }
 
-    public function googleCallback(Request $request) {
+    public function googleCallback() {
         $googleUser = Socialite::driver('google')->stateless()->user();
 
         $user = User::firstOrCreate(
@@ -32,6 +32,28 @@ class AuthController extends Controller {
             ]
         );
 
+
+        $token = Auth::guard('api')->login($user);
+
+        return [
+            'token' => $token
+        ];
+    }
+    public function discordRedirect() {
+        return Socialite::driver('discord')->redirect();
+    }
+    public function discordCallback() {
+        $discordUser = Socialite::driver('discord')->stateless()->user();
+
+        $user = User::firstOrCreate(
+            ['email' => $discordUser->email, 'role' => 'user'],
+            [
+                'name' => $discordUser->name,
+                'email' => $discordUser->email,
+                'picture_url' => $discordUser->avatar,
+                'role' => 'user',
+            ]
+        );
 
         $token = Auth::guard('api')->login($user);
 

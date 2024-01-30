@@ -29,5 +29,7 @@ Route::get('/products', [ProductController::class, 'index']);
 Route::prefix('/auth')->middleware('web')->group(function () {
     Route::get('/google', [AuthController::class, 'googleRedirect']);
     Route::get('/google/callback', [AuthController::class, 'googleCallback']);
+    Route::get('/discord', [AuthController::class, 'discordRedirect']);
+    Route::get('/discord/callback', [AuthController::class, 'discordCallback']);
 });
 Route::get('/auth/me', [AuthController::class, 'index'])->middleware('auth:api');
