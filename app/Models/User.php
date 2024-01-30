@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use function PHPUnit\Framework\returnSelf;
 
-class User extends Authenticatable {
+class User extends Authenticatable implements JWTSubject {
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
@@ -49,6 +50,8 @@ class User extends Authenticatable {
     public function getPictureUrlAttribute($value) {
         if (!$value) {
             return '/default/user.jpg';
+        } else if (str_starts_with($value, 'http')) {
+            return $value;
         }
 
         return '/uploads/' . $value;
@@ -66,5 +69,12 @@ class User extends Authenticatable {
             default:
                 return null;
         }
+    }
+
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims() {
+        return [];
     }
 }

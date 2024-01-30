@@ -30,3 +30,4 @@ Route::prefix('/auth')->middleware('web')->group(function () {
     Route::get('/google', [AuthController::class, 'googleRedirect']);
     Route::get('/google/callback', [AuthController::class, 'googleCallback']);
 });
+Route::get('/auth/me', [AuthController::class, 'index'])->middleware('auth:api');
