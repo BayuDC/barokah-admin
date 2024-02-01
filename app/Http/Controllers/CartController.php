@@ -20,21 +20,24 @@ class CartController extends Controller {
             'products' => $cart->products
         ]);
     }
-    public function update() {
+    public function update(Request $request) {
+        $body = $request->validate([
+            'quantity' => 'required|numeric',
+            'product_id' => 'required|exists:products,id'
+        ]);
+
         $user = Auth::user();
         $cart = $user->transactions()->firstOrCreate([
             'status' => null
         ]);
 
-        $quantity = -100;
-        $productId = 2;
-
         $product =  $cart->products()
-            ->WherePivot('product_id', $productId)->first();
+            ->WherePivot('product_id', $body['product_id'])->first();
+        $quantity = $body['quantity'];
 
         if (!$product) {
             if ($quantity > 0) {
-                $cart->products()->attach($productId, [
+                $cart->products()->attach($body['product_id'], [
                     'quantity' => $quantity
                 ]);
             }
@@ -45,12 +48,12 @@ class CartController extends Controller {
         $quantity += $product->pivot->quantity;
 
         if ($quantity <= 0) {
-            $cart->products()->detach($productId);
+            $cart->products()->detach($product->id);
 
             return response()->noContent();
         }
 
-        $cart->products()->updateExistingPivot($productId, [
+        $cart->products()->updateExistingPivot($product->id, [
             'quantity' => $quantity
         ]);
 
