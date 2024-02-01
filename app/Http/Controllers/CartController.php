@@ -53,6 +53,10 @@ class CartController extends Controller {
             return response()->noContent();
         }
 
+        if ($quantity > $product->stock) {
+            $quantity = $product->stock;
+        }
+
         $cart->products()->updateExistingPivot($product->id, [
             'quantity' => $quantity
         ]);
