@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,8 @@ Route::prefix('/auth')->middleware('web')->group(function () {
     Route::get('/discord', [AuthController::class, 'discordRedirect']);
     Route::get('/discord/callback', [AuthController::class, 'discordCallback']);
 });
-Route::get('/auth/me', [AuthController::class, 'index'])->middleware('auth:api');
+Route::middleware('auth:api')->group(function () {
+    Route::get('/auth/me', [AuthController::class, 'index']);
+    Route::get('/cart/products', [CartController::class, 'index']);
+    Route::patch('/cart/products', [CartController::class, 'update']);
+});

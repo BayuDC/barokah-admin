@@ -13,8 +13,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->enum('status', ['created', 'confirmed', 'canceled', 'finished'])->nullable();
-            $table->enum('payment', ['cash', 'debit']);
-            $table->unsignedBigInteger('final_price');
+            $table->enum('payment', ['cash', 'debit'])->nullable();
+            $table->unsignedBigInteger('final_price')->nullable();
             $table->timestamps();
         });
     }
