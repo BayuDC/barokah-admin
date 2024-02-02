@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Category;
+use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class Product extends Model {
-    use HasFactory;
+    use HasFactory, HasEagerLimit;
 
     protected $guarded = [
         'id'

@@ -1,8 +1,8 @@
 @php
     $menus = [
         'Penjualan' => [
-            ['name' => 'Dasbor', 'url' => '/admin', 'icon' => 'chart-area', 'gate' => null],
-            ['name' => 'Transaksi', 'url' => '#', 'icon' => 'shopping-cart', 'gate' => null],
+            ['name' => 'Beranda', 'url' => '/admin', 'icon' => 'chart-area', 'gate' => null],
+            ['name' => 'Transaksi', 'url' => '/admin/transactions', 'icon' => 'shopping-cart', 'gate' => null],
             ['name' => 'Stok Produk', 'url' => '/admin/products/stocks', 'icon' => 'boxes', 'gate' => null],
             //
         ],

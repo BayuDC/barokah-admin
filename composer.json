@@ -14,6 +14,7 @@
         "livewire/livewire": "^3.3",
         "socialiteproviders/discord": "^4.2",
         "socialiteproviders/google": "^4.1",
+        "staudenmeir/eloquent-eager-limit": "^1.8",
         "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {

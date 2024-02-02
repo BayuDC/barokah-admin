@@ -12,6 +12,7 @@ use App\Livewire\Password;
 use App\Livewire\ProfileDetail;
 use App\Livewire\ProfileUpdate;
 use App\Livewire\StockTable;
+use App\Livewire\TransactionTable;
 use App\Livewire\UserDetail;
 use App\Livewire\UserTable;
 use App\Livewire\WorkerCreate;
@@ -52,6 +53,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/categories/create', CategoryCreate::class);
         Route::get('/categories/update/{category}', CategoryUpdate::class);
 
+        Route::get('/transactions', TransactionTable::class);
 
         Route::get('/users', UserTable::class);
         Route::get('/users/{user}', UserDetail::class);
