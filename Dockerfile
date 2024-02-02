@@ -15,9 +15,13 @@ FROM oven/bun:1 AS build
 
 WORKDIR /tmp
 
+COPY package.json bun.lockb ./
+
+RUN bun install 
+
 COPY . .
 
-RUN bun install && bun run build
+RUN bun run build
 
 FROM base
 
