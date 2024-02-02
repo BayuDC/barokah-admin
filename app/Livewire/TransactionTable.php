@@ -12,18 +12,15 @@ class TransactionTable extends Component {
 
     #[Title('Daftar Transaksi')]
     public function render() {
-        $transactions = Transaction::query()
-            ->orderBy('created_at', 'desc')
-            ->with('customer')
-            ->with(['products' => function ($query) {
-                $query->limit(1)->inRandomOrder();
-            }])
-            ->withCount('products')
-            ->paginate();
-
-
         return view('livewire.transaction-table', [
-            'transactions' => $transactions
+            'transactions' => Transaction::query()
+                ->orderBy('created_at', 'desc')
+                ->with('customer')
+                ->with(['products' => function ($query) {
+                    $query->limit(1)->inRandomOrder();
+                }])
+                ->withCount('products')
+                ->paginate()
         ]);
     }
 }

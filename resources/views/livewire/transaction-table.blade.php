@@ -1,4 +1,4 @@
-<x-section title="Daftar Transaksi">
+<x-section title="Daftar Transaksi" x-data="{ id: null }" full>
     <x-table :columns="['Id', 'Pembeli', 'Produk', 'Total Harga', 'Status']">
         @foreach ($transactions as $transaction)
             <x-table-row>
@@ -15,10 +15,13 @@
                 <x-table-cell>Rp{{ $transaction['final_price'] }}</x-table-cell>
                 <x-table-cell>{{ $transaction->status }}</x-table-cell>
                 <x-table-cell>
-                    <x-button-detail />
+                    <x-button-detail x-on:click="id = {{ $transaction->id }}" />
                 </x-table-cell>
             </x-table-row>
         @endforeach
     </x-table>
-    <x-slot:footer>{{ $transactions->links('components.pagination', data: ['scrollTo' => false]) }}</x-slot:footer>
+    <x-slot:footer>
+        <livewire:transaction-detail />
+        {{ $transactions->links('components.pagination', data: ['scrollTo' => false]) }}
+    </x-slot:footer>
 </x-section>
