@@ -1,4 +1,14 @@
 <x-section title="Daftar Transaksi" x-data="{ id: null }" full>
+    <x-slot:header>
+        <x-filter model="filter.status">
+            <option value="">Semua</option>
+            <option value="created">Dibuat</option>
+            <option value="confirmed">Dikirim</option>
+            <option value="finished">Selesai</option>
+            <option value="canceled">Gagal</option>
+        </x-filter>
+    </x-slot:header>
+
     <x-table :columns="['Id', 'Pembeli', 'Produk', 'Total Harga', 'Status']">
         @foreach ($transactions as $transaction)
             <x-table-row>
