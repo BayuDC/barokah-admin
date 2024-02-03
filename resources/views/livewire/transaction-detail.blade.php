@@ -100,14 +100,16 @@
                         type="button">
                         Tutup
                     </button>
-                    @if ($transaction?->status == 'created')
-                        <button
-                            x-on:click="send"
-                            class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
-                            type="button">
-                            Kirim Pesanan
-                        </button>
-                    @endif
+                    @can('manage-transaction')
+                        @if ($transaction?->status == 'created')
+                            <button
+                                x-on:click="send"
+                                class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
+                                type="button">
+                                Kirim Pesanan
+                            </button>
+                        @endif
+                    @endcan
                 </div>
             </div>
         </div>

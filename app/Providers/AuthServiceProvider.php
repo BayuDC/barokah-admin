@@ -32,5 +32,8 @@ class AuthServiceProvider extends ServiceProvider {
         Gate::define('manage-stock', function (User $user) {
             return $user->role == 'worker';
         });
+        Gate::define('manage-transaction', function (User $user) {
+            return $user->role == 'worker';
+        });
     }
 }

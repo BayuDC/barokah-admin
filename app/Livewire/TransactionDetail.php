@@ -22,6 +22,7 @@ class TransactionDetail extends Component {
     }
 
     public function send() {
+        $this->authorize('manage-transaction');
         $this->transaction->status = 'confirmed';
         $this->transaction->save();
     }
