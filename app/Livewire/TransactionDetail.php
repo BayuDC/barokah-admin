@@ -14,7 +14,6 @@ class TransactionDetail extends Component {
     public $price = '';
 
     public function load($id) {
-
         $transaction = Transaction::query()->with('customer')->with('products')->find($id);
         $this->transaction = $transaction;
         $this->customer = $transaction?->customer->name ?? '';
@@ -22,8 +21,12 @@ class TransactionDetail extends Component {
         $this->price = 'Rp' . $transaction?->final_price ?? '';
     }
 
+    public function send() {
+        $this->transaction->status = 'confirmed';
+        $this->transaction->save();
+    }
+
     public function render() {
-        // $this->load(3);
         return view('livewire.transaction-detail');
     }
 }

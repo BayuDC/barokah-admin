@@ -1,6 +1,11 @@
 <div
     x-data="{
-        get open() { return this.id != null }
+        get open() { return this.id != null },
+        async send() {
+            await $wire.send()
+            await $wire.$parent.$refresh();
+            this.id = null
+        }
     }"
     x-init="$watch('id', id => $wire.load(id))">
     <div
@@ -22,10 +27,38 @@
                     <div class="mb-3">
                         <label class="uppercase text-blueGray-600 text-xs font-bold">
                             Status :
-                        </label><span
-                            class="text-xs font-semibold inline-block py-1 px-2 rounded text-emerald-600 bg-emerald-200 uppercase last:mr-0 mr-1">
-                            {{ $transaction?->status }}
-                        </span>
+                        </label>
+                        @switch($transaction?->status)
+                            @case('created')
+                                <span
+                                    class="text-xs font-semibold inline-block py-1 px-2 rounded text-blueGray-600 bg-blueGray-200 uppercase">
+                                    Dibuat
+                                </span>
+                            @break
+
+                            @case('confirmed')
+                                <span
+                                    class="text-xs font-semibold inline-block py-1 px-2 rounded text-lightBlue-600 bg-lightBlue-200 uppercase">
+                                    Dikirim
+                                </span>
+                            @break
+
+                            @case('finished')
+                                <span
+                                    class="text-xs font-semibold inline-block py-1 px-2 rounded text-emerald-600 bg-emerald-200 uppercase">
+                                    Selesai
+                                </span>
+                            @break
+
+                            @case('canceled')
+                                <span
+                                    class="text-xs font-semibold inline-block py-1 px-2 rounded text-red-600 bg-red-200 uppercase">
+                                    Gagal
+                                </span>
+                            @break
+
+                            @default
+                        @endswitch
                     </div>
                     <x-form-group>
                         <x-input-info label="Pembeli" wire:model="customer" />
@@ -67,11 +100,14 @@
                         type="button">
                         Tutup
                     </button>
-                    <button
-                        class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
-                        type="button">
-                        Kirim Pesanan
-                    </button>
+                    @if ($transaction?->status == 'created')
+                        <button
+                            x-on:click="send"
+                            class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
+                            type="button">
+                            Kirim Pesanan
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

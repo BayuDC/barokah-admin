@@ -13,7 +13,40 @@
                     @endif
                 </x-table-cell>
                 <x-table-cell>Rp{{ $transaction['final_price'] }}</x-table-cell>
-                <x-table-cell>{{ $transaction->status }}</x-table-cell>
+                <x-table-cell>
+                    @switch($transaction->status)
+                        @case('created')
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 rounded text-blueGray-600 bg-blueGray-200 uppercase">
+                                Dibuat
+                            </span>
+                        @break
+
+                        @case('confirmed')
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 rounded text-lightBlue-600 bg-lightBlue-200 uppercase">
+                                Dikirim
+                            </span>
+                        @break
+
+                        @case('finished')
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 rounded text-emerald-600 bg-emerald-200 uppercase">
+                                Selesai
+                            </span>
+                        @break
+
+                        @case('canceled')
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 rounded text-red-600 bg-red-200 uppercase">
+                                Gagal
+                            </span>
+                        @break
+
+                        @default
+                    @endswitch
+
+                </x-table-cell>
                 <x-table-cell>
                     <x-button-detail x-on:click="id = {{ $transaction->id }}" />
                 </x-table-cell>

@@ -14,6 +14,7 @@ class TransactionTable extends Component {
     public function render() {
         return view('livewire.transaction-table', [
             'transactions' => Transaction::query()
+                ->whereNot('status', null)
                 ->orderBy('created_at', 'desc')
                 ->with('customer')
                 ->with(['products' => function ($query) {
