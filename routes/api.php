@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -37,6 +38,7 @@ Route::prefix('/auth')->middleware('web')->group(function () {
 });
 Route::middleware('auth:api')->group(function () {
     Route::get('/auth/me', [AuthController::class, 'index']);
+    Route::put('/profile', [ProfileController::class, 'update']);
 
     Route::get('/cart/products', [CartController::class, 'index']);
     Route::patch('/cart/products', [CartController::class, 'update']);
