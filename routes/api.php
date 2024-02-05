@@ -43,9 +43,9 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/cart/products', [CartController::class, 'index']);
     Route::patch('/cart/products', [CartController::class, 'update']);
 
-    // Route::get('/transactions');
-    // Route::get('/transactions/{transaction}');
-    // Route::get('/transactions/{transaction}/cancel');
-    // Route::get('/transactions/{transaction}/finish');
+    Route::get('/transactions', [TransactionController::class, 'index']);
+    Route::get('/transactions/{transaction}', [TransactionController::class, 'show']);
+    Route::patch('/transactions/{transaction}/cancel', [TransactionController::class, 'cancel']);
+    Route::patch('/transactions/{transaction}/finish', [TransactionController::class, 'finish']);
     Route::post('/transactions/checkout', [TransactionController::class, 'checkout']);
 });

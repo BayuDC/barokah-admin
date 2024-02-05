@@ -9,10 +9,11 @@
         </x-filter>
     </x-slot:header>
 
-    <x-table :columns="['Id', 'Pembeli', 'Produk', 'Total Harga', 'Status']">
+    <x-table :columns="['Id', 'Waktu', 'Pembeli', 'Produk', 'Total Harga', 'Status']">
         @foreach ($transactions as $transaction)
             <x-table-row>
                 <x-table-cell>{{ $transaction->id }}</x-table-cell>
+                <x-table-cell>{{ $transaction['created_at'] }}</x-table-cell>
                 <x-table-cell>{{ $transaction->customer->name }}</x-table-cell>
                 <x-table-cell>
                     @foreach ($transaction->products as $i => $product)

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Models\Transaction;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
@@ -34,6 +35,9 @@ class AuthServiceProvider extends ServiceProvider {
         });
         Gate::define('manage-transaction', function (User $user) {
             return $user->role == 'worker';
+        });
+        Gate::define('own-transaction', function (User $user, Transaction $transaction) {
+            return $user->id == $transaction->user_id && $transaction->status != null;
         });
     }
 }
