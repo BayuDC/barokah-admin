@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder {
      * Seed the application's database.
      */
     public function run(): void {
-        $file = fopen(base_path("database/seeders/categories.csv"), "r");
+        $file = fopen(base_path("database/seeders/dummy/categories.csv"), "r");
 
         $first = true;
         while (($row = fgetcsv($file, 2000, ",")) !== false) {
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder {
 
         fclose($file);
 
-        $file = fopen(base_path("database/seeders/products.csv"), "r");
+        $file = fopen(base_path("database/seeders/dummy/products.csv"), "r");
 
         $first = true;
         while (($row = fgetcsv($file, 2000, ",")) !== false) {
@@ -53,22 +53,29 @@ class DatabaseSeeder extends Seeder {
         User::create([
             'name' => 'Admin',
             'email' => 'admin@barokah.shop',
-            'password' => Hash::make('adminadmin'),
+            'password' => Hash::make('password'),
             'role' => 'admin'
         ]);
         User::create([
-            'name' => 'Rusdi',
-            'email' => 'rusdi@barokah.shop',
-            'password' => Hash::make('rusdikarbu'),
+            'name' => 'Alvin GSX',
+            'email' => 'alvin@barokah.shop',
+            'password' => Hash::make('password'),
             'role' => 'worker'
         ]);
         User::create([
-            'name' => 'Farel',
-            'email' => 'farel@barokah.shop',
-            'password' => Hash::make('farelspakbor'),
+            'name' => 'Rijal Aerox',
+            'email' => 'rijal@barokah.shop',
+            'password' => Hash::make('password'),
+            'role' => 'worker'
+        ]);
+        User::create([
+            'name' => 'Dafa PCX',
+            'email' => 'dafa@barokah.shop',
+            'password' => Hash::make('password'),
             'role' => 'worker'
         ]);
 
         User::factory()->count(100)->create();
+        Transaction::factory()->count(rand(100, 120))->create();
     }
 }

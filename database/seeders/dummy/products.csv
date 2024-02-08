@@ -2,8 +2,8 @@ name,price,unit,category_id
 Paha Ayam,14000,250g,1
 Sayap Ayam,12000,250g,1
 Dada Ayam,15000,250g,1
+Telur Ayam,7000,250g,1
 Pindang,7000,besek,1
-Pindang Besar,10000,besek,1
 Nila,6000,ekor,1
 Lele,6000,ekor,1
 Bandeng,9000,ekor,1
@@ -11,7 +11,7 @@ Kangkung,6000,ikat,1
 Bayam,6000,ikat,2
 Bayam Merah,8000,ikat,2
 Jagung Muda,7000,500g,2
-Jagung Manis,10000,500g,2
+Jagung Manis,8000,500g,2
 Kol,7500,500g,2
 Wortel,6000,250g,2
 Kentang,5000,250g,2
@@ -29,6 +29,8 @@ Temulawak,6500,100g,3
 Ketumbar,6000,100g,3
 Daun Jeruk,5000,bungkus,3
 Daun Salam,5000,bungkus,3
-Minyak Goreng,4000,gelas,4
-Minyak Goreng,12000,500ml,4
-Minyak Goreng,18000,1liter,4
+Garam,2000,bungkus,3
+Kecap,2000,bungkus,3
+Minyak Goreng,4000,cup,4
+Mie Seedap Goreng,3500,bungkus,4
+Mie Seedap Soto Ayam,3500,bungkus,4
