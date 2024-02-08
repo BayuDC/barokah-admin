@@ -21,15 +21,15 @@ class Home extends Component {
         for ($i = 7; $i >= 0; $i--) {
             $day = Carbon::today()->subDays($i);
             array_push($days, "{$day->dayName}, {$day->toDateString()}");
-            array_push($incomes, Transaction::whereDate('created_at', $day)->sum('final_price'));
+            array_push($incomes, Transaction::where('status', 'finished')->whereDate('created_at', $day)->sum('final_price'));
         }
 
 
         return view('livewire.home', [
             'productsCount' => Product::query()->count(),
             'customersCount' => User::query()->where('role', 'user')->count(),
-            'todayTransantionCount' => Transaction::whereDate('created_at', $today)->count(),
-            'todayTransantionIncome' => Transaction::whereDate('created_at', $today)->sum('final_price'),
+            'todayTransantionCount' => Transaction::where('status', 'finished')->whereDate('created_at', $today)->count(),
+            'todayTransantionIncome' => Transaction::where('status', 'finished')->whereDate('created_at', $today)->sum('final_price'),
             'chart' => [
                 'labels' => $days,
                 'incomes' => $incomes,
