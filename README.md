@@ -1,66 +1,53 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Barokah Admin
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The admin dashboard of barokah-shop. Demo: https://barokah.bayudc.fun/admin
 
-## About Laravel
+### 🧢 Roles & abilities
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Admin: managing product, category, and employee
+- Worker: managing transaction, and product stocks
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👤 Sample Users
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Email              | Password | Role   |
+| ------------------ | -------- | ------ |
+| admin@barokah.shop | password | Admin  |
+| alvin@barokah.shop | password | Worker |
+| rijal@barokah.shop | password | Worker |
+| dafa@barokah.shop  | password | Worker |
 
-## Learning Laravel
+### ✨ Features?
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Try it yourself [here](https://barokah.bayudc.fun/admin), i am too dumb to explain it
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🎨 Tech Stacks
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Laravel 10
+- Livewire 3
+- Tailwind
+- NotusJS
+- MariaDB
 
-## Laravel Sponsors
+## 🖼 Screenshots
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+![Home](https://media.discordapp.net/attachments/946013429200723989/1205312868908793907/Screenshot_from_2024-02-09_07-40-24.png?ex=65d7ea15&is=65c57515&hm=d5bb095ba632d90d89ec6ef79928922601debbdc008f07016358b34eb8a467ec&=&format=webp&quality=lossless&width=960&height=540)
+![Transaction](https://media.discordapp.net/attachments/946013429200723989/1205312868334182420/Screenshot_from_2024-02-09_07-39-33.png?ex=65d7ea15&is=65c57515&hm=1d91bd1c96d02634a50a3a79c02b220a222fb7448f0d27626f92f27a83b0107d&=&format=webp&quality=lossless&width=960&height=540)
+![Stock](https://media.discordapp.net/attachments/946013429200723989/1205312868627648523/Screenshot_from_2024-02-09_07-39-44.png?ex=65d7ea15&is=65c57515&hm=3b668b7d02028b7d945bedd030ca079fe97f134924de53d53377122af8a5064d&=&format=webp&quality=lossless&width=960&height=540)
+![Product](https://media.discordapp.net/attachments/946013429200723989/1205312869231493160/Screenshot_from_2024-02-09_07-41-46.png?ex=65d7ea15&is=65c57515&hm=fb10ee6da05c10046c4a791f13ae9b5a9bf35df59a746727e1128eda36550e67&=&format=webp&quality=lossless&width=960&height=540)
+![Employee](https://media.discordapp.net/attachments/946013429200723989/1205312869537943602/Screenshot_from_2024-02-09_07-41-55.png?ex=65d7ea15&is=65c57515&hm=be9b9669f6c8af3d0e430ceaeee902dbcf511a1f846709b32810034348be8e6d&=&format=webp&quality=lossless&width=960&height=540)
 
-### Premium Partners
+and more...
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🔥 Dev Setup
 
-## Contributing
+> Requirements: php(8.2), composer, and bun
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+composer install
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+bun install
+bun run dev
+```
